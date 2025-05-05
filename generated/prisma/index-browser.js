@@ -163,6 +163,125 @@ exports.Prisma.VerificationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  locale: 'locale',
+  description: 'description',
+  metaId: 'metaId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  imageMetaId: 'imageMetaId'
+};
+
+exports.Prisma.ProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  locale: 'locale',
+  description: 'description',
+  type: 'type',
+  isFeatured: 'isFeatured',
+  isShowroom: 'isShowroom',
+  categoryId: 'categoryId',
+  metaId: 'metaId',
+  coverImage: 'coverImage',
+  images: 'images',
+  price: 'price',
+  promoLayout: 'promoLayout',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  imageMetaId: 'imageMetaId',
+  status: 'status'
+};
+
+exports.Prisma.PromoImageScalarFieldEnum = {
+  id: 'id',
+  images: 'images',
+  type: 'type',
+  productId: 'productId',
+  metaId: 'metaId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ImageMetaScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  alt: 'alt',
+  locale: 'locale',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DrawingsImageScalarFieldEnum = {
+  id: 'id',
+  images: 'images',
+  productId: 'productId',
+  metaId: 'metaId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FileScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  file: 'file',
+  productId: 'productId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  locale: 'locale',
+  metaId: 'metaId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  status: 'status'
+};
+
+exports.Prisma.MetaScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BlockScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  title: 'title',
+  content: 'content',
+  image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  pageId: 'pageId'
+};
+
+exports.Prisma.GalleryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  title: 'title',
+  images: 'images',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  pageId: 'pageId'
+};
+
+exports.Prisma.LocaleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  label: 'label',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -183,7 +302,18 @@ exports.Prisma.ModelName = {
   User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  Category: 'Category',
+  Product: 'Product',
+  PromoImage: 'PromoImage',
+  ImageMeta: 'ImageMeta',
+  DrawingsImage: 'DrawingsImage',
+  File: 'File',
+  Page: 'Page',
+  Meta: 'Meta',
+  Block: 'Block',
+  Gallery: 'Gallery',
+  Locale: 'Locale'
 };
 
 /**

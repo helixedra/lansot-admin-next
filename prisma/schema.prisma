@@ -72,3 +72,170 @@ model Verification {
 
   @@map("verification")
 }
+
+model Category {
+  id          String     @id @default(cuid())
+  name        String
+  slug        String
+  locale      String?
+  description String?
+  metaId      String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @default(now())
+  products    Product[]
+  Meta        Meta       @relation(fields: [metaId], references: [id])
+  ImageMeta   ImageMeta? @relation(fields: [imageMetaId], references: [id])
+  imageMetaId String?
+
+  @@map("category")
+}
+
+model Product {
+  id             String          @id @default(cuid())
+  name           String
+  slug           String?
+  locale         String?
+  description    String?
+  type           String?
+  isFeatured     Boolean         @default(false)
+  isShowroom     Boolean         @default(false)
+  category       Category        @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId     String
+  metaId         String
+  coverImage     String?
+  images         String[]
+  price          Float
+  promoLayout    String?
+  promoImages    PromoImage[]
+  files          File[]
+  drawingsImages DrawingsImage[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @default(now())
+  meta           Meta            @relation(fields: [metaId], references: [id])
+  ImageMeta      ImageMeta?      @relation(fields: [imageMetaId], references: [id])
+  imageMetaId    String?
+  status         String          @default("draft")
+
+  @@map("product")
+}
+
+model PromoImage {
+  id        String    @id @default(cuid())
+  images    String[]
+  type      String
+  product   Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  meta      ImageMeta @relation(fields: [metaId], references: [id], onDelete: Cascade)
+  metaId    String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+
+  @@map("promo_image")
+}
+
+model ImageMeta {
+  id             String          @id @default(cuid())
+  title          String
+  alt            String?
+  locale         String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @default(now())
+  promoImages    PromoImage[]
+  drawingsImages DrawingsImage[]
+  Category       Category[]
+  Product        Product[]
+
+  @@map("image_meta")
+}
+
+model DrawingsImage {
+  id        String    @id @default(cuid())
+  images    String[]
+  product   Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  meta      ImageMeta @relation(fields: [metaId], references: [id], onDelete: Cascade)
+  metaId    String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+
+  @@map("drawings_image")
+}
+
+model File {
+  id        String   @id @default(cuid())
+  name      String
+  file      String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@map("model")
+}
+
+model Page {
+  id        String    @id @default(cuid())
+  name      String
+  slug      String
+  locale    String?
+  meta      Meta      @relation(fields: [metaId], references: [id], onDelete: Cascade)
+  metaId    String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+  status    String    @default("draft")
+  blocks    Block[]
+  galleries Gallery[]
+
+  @@map("page")
+}
+
+model Meta {
+  id          String     @id @default(cuid())
+  title       String?
+  description String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @default(now())
+  pages       Page[]
+  categories  Category[]
+  products    Product[]
+
+  @@map("meta")
+}
+
+model Block {
+  id        String   @id @default(cuid())
+  name      String
+  title     String?
+  content   String?
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  page      Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  pageId    String
+
+  @@map("block")
+}
+
+model Gallery {
+  id        String   @id @default(cuid())
+  name      String
+  title     String?
+  images    String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  page      Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  pageId    String
+
+  @@map("gallery")
+}
+
+model Locale {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String
+  label     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@map("locale")
+}
