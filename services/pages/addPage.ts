@@ -13,8 +13,6 @@ export async function addPage({
   try {
     const locales = await prisma.locale.findMany();
 
-    console.log(locales);
-
     const results = await Promise.all(
       locales.map(async (locale) => {
         const res = await prisma.page.create({

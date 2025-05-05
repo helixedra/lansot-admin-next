@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { RiCheckLine } from "react-icons/ri";
 import { twMerge } from "tailwind-merge";
-import { config as c } from "./config";
+import { theme as c } from "./config";
 
 export function Checkbox({
   className,

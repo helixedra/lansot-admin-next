@@ -1,4 +1,4 @@
-export const config = {
+export const theme = {
   bg: "bg-zinc-800 dark:bg-white",
   listBg: "dark:bg-zinc-800 bg-white",
   listHover: "hover:bg-zinc-100 dark:hover:bg-zinc-700",

@@ -1,6 +1,6 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import { config as c } from "./config";
+import { theme as c } from "./config";
 
 type BadgeProps = {
   children?: React.ReactNode | string;

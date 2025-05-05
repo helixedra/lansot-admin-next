@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import { Button } from "./Button";
-import { config as c } from "./config";
+import { theme as c } from "./config";
 import { twMerge } from "tailwind-merge";
 import { RiCheckLine, RiArrowDropDownLine } from "react-icons/ri";
 

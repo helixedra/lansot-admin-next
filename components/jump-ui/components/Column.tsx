@@ -1,7 +1,7 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import { paddings } from "./config";
-import { config as c } from "./config";
+import { theme as c } from "./config";
 
 type ColumnProps = {
   children?: React.ReactNode | React.ReactNode[] | string | number;
