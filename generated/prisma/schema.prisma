@@ -144,7 +144,6 @@ model ImageMeta {
   drawingsImages DrawingsImage[]
   Category       Category[]
   Product        Product[]
-  BlockImage     BlockImage[]
   Image          Image[]
 
   @@map("image_meta")
@@ -205,31 +204,19 @@ model Meta {
 }
 
 model Block {
-  id        String       @id @default(cuid())
+  id        String   @id @default(cuid())
   name      String
   locale    String?
   title     String?
   content   String?
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @default(now())
-  page      Page?        @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
   pageId    String?
-  images    BlockImage[]
+  imageId   String?
+  page      Page?    @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  image     Image?   @relation(fields: [imageId], references: [id], onDelete: Cascade)
 
   @@map("block")
-}
-
-model BlockImage {
-  id        String     @id @default(cuid())
-  image     String
-  block     Block?     @relation(fields: [blockId], references: [id], onDelete: Cascade)
-  meta      ImageMeta? @relation(fields: [metaId], references: [id], onDelete: Cascade)
-  metaId    String?
-  blockId   String?
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @default(now())
-
-  @@map("block_image")
 }
 
 model Image {
@@ -239,6 +226,7 @@ model Image {
   metaId    String?
   createdAt DateTime   @default(now())
   updatedAt DateTime   @default(now())
+  blocks    Block[]
 
   @@map("image")
 }

@@ -1,7 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { RiHomeFill, RiImageFill, RiFileListFill } from "react-icons/ri";
+import {
+  RiHomeFill,
+  RiImageFill,
+  RiFileListFill,
+  RiTextBlock,
+} from "react-icons/ri";
 
 export default function Sidebar() {
   const [isLabelVisible, setIsLabelVisible] = useState(false);
@@ -17,6 +22,11 @@ export default function Sidebar() {
       href: "/pages",
     },
     {
+      label: "Blocks",
+      icon: <RiTextBlock />,
+      href: "/blocks",
+    },
+    {
       label: "Images",
       icon: <RiImageFill />,
       href: "/images",
@@ -25,11 +35,11 @@ export default function Sidebar() {
 
   return (
     <div className="h-full bg-zinc-400/20">
-      <ul className="flex flex-col gap-4 p-4 h-full min-h-screen">
+      <ul className="flex flex-col gap-4 py-4 px-2 h-full min-h-screen">
         {items.map((item) => (
           <li key={item.label}>
             <Link href={item.href} className="hover:opacity-70 transition">
-              <div className="flex items-center gap-2 rounded-lg p-2 hover:bg-zinc-400/20 transition">
+              <div className="flex items-center gap-2 rounded-lg p-2 hover:bg-zinc-400/20 transition text-[24px]">
                 {item.icon}
                 {isLabelVisible && (
                   <span className="text-sm">{item.label}</span>

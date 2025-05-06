@@ -10,6 +10,9 @@ import { Textarea } from "@/components/jump-ui/components/Textarea";
 import { addBlock } from "@/services/blocks/addBlock";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { getLocales } from "@/services/getLocales";
+import Gallery from "@/components/Gallery";
+import Image from "next/image";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
 export default function AddBlockPage() {
   // const { slug: slugParam } = useParams();
@@ -18,11 +21,20 @@ export default function AddBlockPage() {
   // const [blocks, setBlocks] = React.useState([]);
   const [image, setImage] = React.useState<File | null>(null);
   const [isImage, setIsImage] = React.useState(false);
+  const [selectedImage, setSelectedImage] = React.useState<{
+    id: string;
+    path: string;
+  } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(form);
-    await mutateAsync({ data: form });
+    await mutateAsync({ data: form, image: selectedImage?.id });
+  };
+
+  const removeImage = () => {
+    setSelectedImage(null);
+    setImage(null);
   };
 
   const queryClient = useQueryClient();
@@ -62,8 +74,8 @@ export default function AddBlockPage() {
   console.log("form", form);
 
   const { mutateAsync } = useMutation({
-    mutationFn: async ({ data }: { data: any }) => {
-      const res = await addBlock({ data });
+    mutationFn: async ({ data, image }: { data: any; image?: string }) => {
+      const res = await addBlock({ data, image });
       return res;
     },
     onError: (error) => {
@@ -77,7 +89,7 @@ export default function AddBlockPage() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
+  console.log("selectedImage", selectedImage);
   //   return;
   return (
     <div>
@@ -153,66 +165,21 @@ export default function AddBlockPage() {
             onChange={() => setIsImage((prev) => !prev)}
           />
           <div>Image</div>
+          {selectedImage?.id && (
+            <div className="flex items-center gap-2">
+              <Image src={selectedImage.path} width={100} height={100} alt="" />
+              <Button onClick={removeImage}>
+                <RiDeleteBin2Line />
+              </Button>
+            </div>
+          )}
         </div>
         {isImage && (
           <>
-            <Input
-              type="file"
-              name="image"
-              label="Image"
-              onChange={(e) =>
-                setForm((prev: any) => ({
-                  ...prev,
-                  image: e.target.files?.[0],
-                }))
-              }
+            <Gallery
+              selectedImage={selectedImage}
+              setSelectedImage={setSelectedImage}
             />
-            <Tabs>
-              {locales?.map((locale) => (
-                <Tab key={locale.slug} label={locale.slug}>
-                  <Input
-                    type="text"
-                    name="imageAlt"
-                    label="Image Alt"
-                    onChange={(e) =>
-                      setForm((prev: any) => ({
-                        ...prev,
-                        locales: {
-                          ...prev.locales,
-                          [locale.slug!]: {
-                            ...prev.locales[locale.slug!],
-                            imageAlt: e.target.value,
-                          },
-                        },
-                      }))
-                    }
-                  />
-                </Tab>
-              ))}
-            </Tabs>
-            <Tabs>
-              {locales?.map((locale) => (
-                <Tab key={locale.slug} label={locale.slug}>
-                  <Input
-                    type="text"
-                    name="imageTitle"
-                    label="Image Title"
-                    onChange={(e) =>
-                      setForm((prev: any) => ({
-                        ...prev,
-                        locales: {
-                          ...prev.locales,
-                          [locale.slug!]: {
-                            ...prev.locales[locale.slug!],
-                            imageTitle: e.target.value,
-                          },
-                        },
-                      }))
-                    }
-                  />
-                </Tab>
-              ))}
-            </Tabs>
           </>
         )}
         <Button onClick={handleSubmit}>Save</Button>

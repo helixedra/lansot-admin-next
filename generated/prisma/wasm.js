@@ -260,16 +260,8 @@ exports.Prisma.BlockScalarFieldEnum = {
   content: 'content',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  pageId: 'pageId'
-};
-
-exports.Prisma.BlockImageScalarFieldEnum = {
-  id: 'id',
-  image: 'image',
-  metaId: 'metaId',
-  blockId: 'blockId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  pageId: 'pageId',
+  imageId: 'imageId'
 };
 
 exports.Prisma.ImageScalarFieldEnum = {
@@ -330,7 +322,6 @@ exports.Prisma.ModelName = {
   Page: 'Page',
   Meta: 'Meta',
   Block: 'Block',
-  BlockImage: 'BlockImage',
   Image: 'Image',
   Gallery: 'Gallery',
   Locale: 'Locale'

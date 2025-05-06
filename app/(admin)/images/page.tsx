@@ -5,7 +5,7 @@ import UploadForm from "@/components/shared/UploadForm";
 import { useQuery } from "@tanstack/react-query";
 import { getImages } from "@/services/images/getImages";
 import { Dialog } from "@/components/jump-ui";
-import Image from "next/image";
+import { ImageItem } from "@/components/shared/ImageItem";
 
 export default function ImagesPage() {
   const [open, setOpen] = React.useState(false);
@@ -34,20 +34,3 @@ export default function ImagesPage() {
     </div>
   );
 }
-
-const ImageItem = ({ image }: { image: any }) => {
-  return (
-    <li
-      key={image.id}
-      className="flex gap-2 w-24 h-24 bg-zinc-500/20 rounded-lg hover:opacity-80 transition cursor-pointer overflow-hidden"
-    >
-      <Image
-        src={image.image}
-        width={100}
-        height={100}
-        alt=""
-        className="w-full h-full object-contain"
-      />
-    </li>
-  );
-};
