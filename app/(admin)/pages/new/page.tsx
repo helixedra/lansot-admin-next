@@ -9,12 +9,13 @@ import Link from "next/link";
 import { Textarea } from "@/components/jump-ui/components/Textarea";
 import { addPage } from "@/services/pages/addPage";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { getLocales } from "@/services/getLocales";
 
 export default function PagePage() {
-  const { slug: slugParam } = useParams();
+  // const { slug: slugParam } = useParams();
 
   const [form, setForm] = React.useState({} as any);
-  const [blocks, setBlocks] = React.useState([]);
+  // const [blocks, setBlocks] = React.useState([]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,32 +25,40 @@ export default function PagePage() {
 
   const queryClient = useQueryClient();
 
-  const { data: page, isLoading } = useQuery({
-    queryKey: ["page", slugParam],
-    queryFn: () => getPage(slugParam as string),
+  // const { data: page, isLoading } = useQuery({
+  //   queryKey: ["page", slugParam],
+  //   queryFn: () => getPage(slugParam as string),
+  // });
+
+  const { data: locales, isLoading } = useQuery({
+    queryKey: ["locales"],
+    queryFn: getLocales,
   });
 
-  const locales = page?.map((page) => page.locale);
+  // const locales = page?.map((page) => page.locale);
 
   React.useEffect(() => {
-    if (page) {
+    if (locales) {
       const globalPage = {
-        name: page[0].name,
-        slug: page[0].slug,
+        name: "",
+        slug: "",
       };
-      const localePage = page.reverse().reduce(
+      const localePage = locales.reverse().reduce(
         (acc, page) => ({
           ...acc,
-          [page.locale!]: {
-            locale: page.locale,
-            meta: page.meta,
+          [page.slug!]: {
+            locale: page.slug,
+            meta: {
+              title: "",
+              description: "",
+            },
           },
         }),
         {}
       );
       setForm({ ...globalPage, locales: { ...localePage } });
     }
-  }, [page, slugParam]);
+  }, [locales]);
 
   console.log("form", form);
 
@@ -66,7 +75,7 @@ export default function PagePage() {
     },
   });
 
-  if (isLoading || !form.name) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
@@ -76,7 +85,6 @@ export default function PagePage() {
       <div>
         <Link href="/pages">Back</Link>
       </div>
-      {slugParam}
 
       <div className="flex flex-col gap-8 max-w-md mx-auto">
         <Input
@@ -105,21 +113,21 @@ export default function PagePage() {
         />
         <Tabs>
           {locales?.map((locale) => (
-            <Tab key={locale} label={locale!}>
+            <Tab key={locale.slug} label={locale.slug}>
               <Input
                 type="text"
                 name="title"
                 label="Meta Title"
-                value={form?.locales?.[locale!]?.meta?.title || ""}
+                value={form?.locales?.[locale.slug]!.meta?.title || ""}
                 onChange={(e) => {
                   setForm((prev: any) => ({
                     ...prev,
                     locales: {
                       ...prev.locales,
-                      [locale!]: {
-                        ...prev.locales[locale!],
+                      [locale.slug!]: {
+                        ...prev.locales[locale.slug!],
                         meta: {
-                          ...prev.locales[locale!].meta,
+                          ...prev.locales[locale.slug!].meta,
                           title: e.target.value,
                         },
                       },
@@ -132,20 +140,20 @@ export default function PagePage() {
         </Tabs>
         <Tabs>
           {locales?.map((locale) => (
-            <Tab key={locale} label={locale!}>
+            <Tab key={locale.slug} label={locale.slug}>
               <Textarea
                 name="description"
                 label="Meta Description"
-                value={form?.locales?.[locale!]?.meta?.description || ""}
+                value={form?.locales?.[locale.slug]!.meta?.description || ""}
                 onChange={(e) => {
                   setForm((prev: any) => ({
                     ...prev,
                     locales: {
                       ...prev.locales,
-                      [locale!]: {
-                        ...prev.locales[locale!],
+                      [locale.slug!]: {
+                        ...prev.locales[locale.slug!],
                         meta: {
-                          ...prev.locales[locale!].meta,
+                          ...prev.locales[locale.slug!].meta,
                           description: e.target.value,
                         },
                       },

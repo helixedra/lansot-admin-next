@@ -3,38 +3,33 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 import { theme as c } from "./config";
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  className?: string | undefined;
-  style?: React.CSSProperties | undefined;
-  icon?: string | React.ReactNode | undefined;
-  iconEnd?: string | React.ReactNode | undefined;
+type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
+  className?: string;
+  style?: React.CSSProperties;
+  icon?: string | React.ReactNode;
+  iconEnd?: string | React.ReactNode;
   name?: string;
-  type?: "text" | "email" | "password" | "number" | "tel" | "url" | "file";
   placeholder?: string;
   defaultValue?: string;
   value?: string;
   label?: string;
-  props?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
-export function Input({
+export function Textarea({
   className,
   icon,
   iconEnd,
   style,
-  name = "input",
-  type = "text",
+  name = "textarea",
   placeholder,
   defaultValue,
   value,
   label,
   ...props
-}: InputProps) {
+}: TextareaProps) {
   const defaultStyles = `bg-transparent px-4 border ${c.border} py-2 ${
     c.rounded
-  } ${
-    c.height
-  } focus:outline-none text-sm focus:ring-2 focus:ring-zinc-400 focus:ring-opacity-50 flex items-center justify-center ${
+  } focus:outline-none text-sm focus:ring-2 focus:ring-zinc-400 focus:ring-opacity-50 flex items-center ${
     icon && "pl-9"
   } ${iconEnd && "pr-9"} w-full`;
 
@@ -51,22 +46,21 @@ export function Input({
 
       <span className={twMerge("block relative", className)}>
         {icon && (
-          <span className={`absolute left-3 top-0 flex items-center h-full`}>
+          <span className="absolute left-3 top-0 flex items-start h-full pt-2">
             {icon}
           </span>
         )}
-        <input
+        <textarea
           className={twMerge(defaultStyles, className)}
           style={style}
           name={name}
-          type={type}
           placeholder={placeholder}
           defaultValue={defaultValue}
           value={value}
           {...props}
         />
         {iconEnd && (
-          <span className={`absolute top-0 right-3 flex items-center h-full`}>
+          <span className="absolute right-3 top-0 flex items-start h-full pt-2">
             {iconEnd}
           </span>
         )}
