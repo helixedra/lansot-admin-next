@@ -144,6 +144,8 @@ model ImageMeta {
   drawingsImages DrawingsImage[]
   Category       Category[]
   Product        Product[]
+  BlockImage     BlockImage[]
+  Image          Image[]
 
   @@map("image_meta")
 }
@@ -203,22 +205,48 @@ model Meta {
 }
 
 model Block {
-  id        String   @id @default(cuid())
+  id        String       @id @default(cuid())
   name      String
+  locale    String?
   title     String?
   content   String?
-  image     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  page      Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
-  pageId    String
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @default(now())
+  page      Page?        @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  pageId    String?
+  images    BlockImage[]
 
   @@map("block")
+}
+
+model BlockImage {
+  id        String     @id @default(cuid())
+  image     String
+  block     Block?     @relation(fields: [blockId], references: [id], onDelete: Cascade)
+  meta      ImageMeta? @relation(fields: [metaId], references: [id], onDelete: Cascade)
+  metaId    String?
+  blockId   String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now())
+
+  @@map("block_image")
+}
+
+model Image {
+  id        String     @id @default(cuid())
+  image     String
+  meta      ImageMeta? @relation(fields: [metaId], references: [id], onDelete: Cascade)
+  metaId    String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now())
+
+  @@map("image")
 }
 
 model Gallery {
   id        String   @id @default(cuid())
   name      String
+  locale    String?
   title     String?
   images    String[]
   createdAt DateTime @default(now())

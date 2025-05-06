@@ -79,6 +79,16 @@ export type Meta = $Result.DefaultSelection<Prisma.$MetaPayload>
  */
 export type Block = $Result.DefaultSelection<Prisma.$BlockPayload>
 /**
+ * Model BlockImage
+ * 
+ */
+export type BlockImage = $Result.DefaultSelection<Prisma.$BlockImagePayload>
+/**
+ * Model Image
+ * 
+ */
+export type Image = $Result.DefaultSelection<Prisma.$ImagePayload>
+/**
  * Model Gallery
  * 
  */
@@ -343,6 +353,26 @@ export class PrismaClient<
     * ```
     */
   get block(): Prisma.BlockDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.blockImage`: Exposes CRUD operations for the **BlockImage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BlockImages
+    * const blockImages = await prisma.blockImage.findMany()
+    * ```
+    */
+  get blockImage(): Prisma.BlockImageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.image`: Exposes CRUD operations for the **Image** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Images
+    * const images = await prisma.image.findMany()
+    * ```
+    */
+  get image(): Prisma.ImageDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.gallery`: Exposes CRUD operations for the **Gallery** model.
@@ -816,6 +846,8 @@ export namespace Prisma {
     Page: 'Page',
     Meta: 'Meta',
     Block: 'Block',
+    BlockImage: 'BlockImage',
+    Image: 'Image',
     Gallery: 'Gallery',
     Locale: 'Locale'
   };
@@ -836,7 +868,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "category" | "product" | "promoImage" | "imageMeta" | "drawingsImage" | "file" | "page" | "meta" | "block" | "gallery" | "locale"
+      modelProps: "user" | "session" | "account" | "verification" | "category" | "product" | "promoImage" | "imageMeta" | "drawingsImage" | "file" | "page" | "meta" | "block" | "blockImage" | "image" | "gallery" | "locale"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1802,6 +1834,154 @@ export namespace Prisma {
           }
         }
       }
+      BlockImage: {
+        payload: Prisma.$BlockImagePayload<ExtArgs>
+        fields: Prisma.BlockImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BlockImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BlockImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockImagePayload>
+          }
+          findFirst: {
+            args: Prisma.BlockImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BlockImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockImagePayload>
+          }
+          findMany: {
+            args: Prisma.BlockImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockImagePayload>[]
+          }
+          create: {
+            args: Prisma.BlockImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockImagePayload>
+          }
+          createMany: {
+            args: Prisma.BlockImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BlockImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockImagePayload>[]
+          }
+          delete: {
+            args: Prisma.BlockImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockImagePayload>
+          }
+          update: {
+            args: Prisma.BlockImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.BlockImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BlockImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BlockImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.BlockImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlockImagePayload>
+          }
+          aggregate: {
+            args: Prisma.BlockImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBlockImage>
+          }
+          groupBy: {
+            args: Prisma.BlockImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BlockImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BlockImageCountArgs<ExtArgs>
+            result: $Utils.Optional<BlockImageCountAggregateOutputType> | number
+          }
+        }
+      }
+      Image: {
+        payload: Prisma.$ImagePayload<ExtArgs>
+        fields: Prisma.ImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          findFirst: {
+            args: Prisma.ImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          findMany: {
+            args: Prisma.ImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
+          }
+          create: {
+            args: Prisma.ImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          createMany: {
+            args: Prisma.ImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
+          }
+          delete: {
+            args: Prisma.ImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          update: {
+            args: Prisma.ImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.ImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.ImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImagePayload>
+          }
+          aggregate: {
+            args: Prisma.ImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateImage>
+          }
+          groupBy: {
+            args: Prisma.ImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ImageCountArgs<ExtArgs>
+            result: $Utils.Optional<ImageCountAggregateOutputType> | number
+          }
+        }
+      }
       Gallery: {
         payload: Prisma.$GalleryPayload<ExtArgs>
         fields: Prisma.GalleryFieldRefs
@@ -2047,6 +2227,8 @@ export namespace Prisma {
     page?: PageOmit
     meta?: MetaOmit
     block?: BlockOmit
+    blockImage?: BlockImageOmit
+    image?: ImageOmit
     gallery?: GalleryOmit
     locale?: LocaleOmit
   }
@@ -2267,6 +2449,8 @@ export namespace Prisma {
     drawingsImages: number
     Category: number
     Product: number
+    BlockImage: number
+    Image: number
   }
 
   export type ImageMetaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2274,6 +2458,8 @@ export namespace Prisma {
     drawingsImages?: boolean | ImageMetaCountOutputTypeCountDrawingsImagesArgs
     Category?: boolean | ImageMetaCountOutputTypeCountCategoryArgs
     Product?: boolean | ImageMetaCountOutputTypeCountProductArgs
+    BlockImage?: boolean | ImageMetaCountOutputTypeCountBlockImageArgs
+    Image?: boolean | ImageMetaCountOutputTypeCountImageArgs
   }
 
   // Custom InputTypes
@@ -2313,6 +2499,20 @@ export namespace Prisma {
    */
   export type ImageMetaCountOutputTypeCountProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductWhereInput
+  }
+
+  /**
+   * ImageMetaCountOutputType without action
+   */
+  export type ImageMetaCountOutputTypeCountBlockImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BlockImageWhereInput
+  }
+
+  /**
+   * ImageMetaCountOutputType without action
+   */
+  export type ImageMetaCountOutputTypeCountImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
   }
 
 
@@ -2402,6 +2602,37 @@ export namespace Prisma {
    */
   export type MetaCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductWhereInput
+  }
+
+
+  /**
+   * Count Type BlockCountOutputType
+   */
+
+  export type BlockCountOutputType = {
+    images: number
+  }
+
+  export type BlockCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    images?: boolean | BlockCountOutputTypeCountImagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BlockCountOutputType without action
+   */
+  export type BlockCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockCountOutputType
+     */
+    select?: BlockCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BlockCountOutputType without action
+   */
+  export type BlockCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BlockImageWhereInput
   }
 
 
@@ -10609,6 +10840,8 @@ export namespace Prisma {
     drawingsImages?: boolean | ImageMeta$drawingsImagesArgs<ExtArgs>
     Category?: boolean | ImageMeta$CategoryArgs<ExtArgs>
     Product?: boolean | ImageMeta$ProductArgs<ExtArgs>
+    BlockImage?: boolean | ImageMeta$BlockImageArgs<ExtArgs>
+    Image?: boolean | ImageMeta$ImageArgs<ExtArgs>
     _count?: boolean | ImageMetaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["imageMeta"]>
 
@@ -10645,6 +10878,8 @@ export namespace Prisma {
     drawingsImages?: boolean | ImageMeta$drawingsImagesArgs<ExtArgs>
     Category?: boolean | ImageMeta$CategoryArgs<ExtArgs>
     Product?: boolean | ImageMeta$ProductArgs<ExtArgs>
+    BlockImage?: boolean | ImageMeta$BlockImageArgs<ExtArgs>
+    Image?: boolean | ImageMeta$ImageArgs<ExtArgs>
     _count?: boolean | ImageMetaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ImageMetaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -10657,6 +10892,8 @@ export namespace Prisma {
       drawingsImages: Prisma.$DrawingsImagePayload<ExtArgs>[]
       Category: Prisma.$CategoryPayload<ExtArgs>[]
       Product: Prisma.$ProductPayload<ExtArgs>[]
+      BlockImage: Prisma.$BlockImagePayload<ExtArgs>[]
+      Image: Prisma.$ImagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -11063,6 +11300,8 @@ export namespace Prisma {
     drawingsImages<T extends ImageMeta$drawingsImagesArgs<ExtArgs> = {}>(args?: Subset<T, ImageMeta$drawingsImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrawingsImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Category<T extends ImageMeta$CategoryArgs<ExtArgs> = {}>(args?: Subset<T, ImageMeta$CategoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Product<T extends ImageMeta$ProductArgs<ExtArgs> = {}>(args?: Subset<T, ImageMeta$ProductArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    BlockImage<T extends ImageMeta$BlockImageArgs<ExtArgs> = {}>(args?: Subset<T, ImageMeta$BlockImageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Image<T extends ImageMeta$ImageArgs<ExtArgs> = {}>(args?: Subset<T, ImageMeta$ImageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11579,6 +11818,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
+  }
+
+  /**
+   * ImageMeta.BlockImage
+   */
+  export type ImageMeta$BlockImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+    where?: BlockImageWhereInput
+    orderBy?: BlockImageOrderByWithRelationInput | BlockImageOrderByWithRelationInput[]
+    cursor?: BlockImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BlockImageScalarFieldEnum | BlockImageScalarFieldEnum[]
+  }
+
+  /**
+   * ImageMeta.Image
+   */
+  export type ImageMeta$ImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    cursor?: ImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
   }
 
   /**
@@ -16040,9 +16327,9 @@ export namespace Prisma {
   export type BlockMinAggregateOutputType = {
     id: string | null
     name: string | null
+    locale: string | null
     title: string | null
     content: string | null
-    image: string | null
     createdAt: Date | null
     updatedAt: Date | null
     pageId: string | null
@@ -16051,9 +16338,9 @@ export namespace Prisma {
   export type BlockMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    locale: string | null
     title: string | null
     content: string | null
-    image: string | null
     createdAt: Date | null
     updatedAt: Date | null
     pageId: string | null
@@ -16062,9 +16349,9 @@ export namespace Prisma {
   export type BlockCountAggregateOutputType = {
     id: number
     name: number
+    locale: number
     title: number
     content: number
-    image: number
     createdAt: number
     updatedAt: number
     pageId: number
@@ -16075,9 +16362,9 @@ export namespace Prisma {
   export type BlockMinAggregateInputType = {
     id?: true
     name?: true
+    locale?: true
     title?: true
     content?: true
-    image?: true
     createdAt?: true
     updatedAt?: true
     pageId?: true
@@ -16086,9 +16373,9 @@ export namespace Prisma {
   export type BlockMaxAggregateInputType = {
     id?: true
     name?: true
+    locale?: true
     title?: true
     content?: true
-    image?: true
     createdAt?: true
     updatedAt?: true
     pageId?: true
@@ -16097,9 +16384,9 @@ export namespace Prisma {
   export type BlockCountAggregateInputType = {
     id?: true
     name?: true
+    locale?: true
     title?: true
     content?: true
-    image?: true
     createdAt?: true
     updatedAt?: true
     pageId?: true
@@ -16181,12 +16468,12 @@ export namespace Prisma {
   export type BlockGroupByOutputType = {
     id: string
     name: string
+    locale: string | null
     title: string | null
     content: string | null
-    image: string | null
     createdAt: Date
     updatedAt: Date
-    pageId: string
+    pageId: string | null
     _count: BlockCountAggregateOutputType | null
     _min: BlockMinAggregateOutputType | null
     _max: BlockMaxAggregateOutputType | null
@@ -16209,75 +16496,80 @@ export namespace Prisma {
   export type BlockSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    locale?: boolean
     title?: boolean
     content?: boolean
-    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     pageId?: boolean
-    page?: boolean | PageDefaultArgs<ExtArgs>
+    page?: boolean | Block$pageArgs<ExtArgs>
+    images?: boolean | Block$imagesArgs<ExtArgs>
+    _count?: boolean | BlockCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["block"]>
 
   export type BlockSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    locale?: boolean
     title?: boolean
     content?: boolean
-    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     pageId?: boolean
-    page?: boolean | PageDefaultArgs<ExtArgs>
+    page?: boolean | Block$pageArgs<ExtArgs>
   }, ExtArgs["result"]["block"]>
 
   export type BlockSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    locale?: boolean
     title?: boolean
     content?: boolean
-    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     pageId?: boolean
-    page?: boolean | PageDefaultArgs<ExtArgs>
+    page?: boolean | Block$pageArgs<ExtArgs>
   }, ExtArgs["result"]["block"]>
 
   export type BlockSelectScalar = {
     id?: boolean
     name?: boolean
+    locale?: boolean
     title?: boolean
     content?: boolean
-    image?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     pageId?: boolean
   }
 
-  export type BlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "title" | "content" | "image" | "createdAt" | "updatedAt" | "pageId", ExtArgs["result"]["block"]>
+  export type BlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "locale" | "title" | "content" | "createdAt" | "updatedAt" | "pageId", ExtArgs["result"]["block"]>
   export type BlockInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    page?: boolean | PageDefaultArgs<ExtArgs>
+    page?: boolean | Block$pageArgs<ExtArgs>
+    images?: boolean | Block$imagesArgs<ExtArgs>
+    _count?: boolean | BlockCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BlockIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    page?: boolean | PageDefaultArgs<ExtArgs>
+    page?: boolean | Block$pageArgs<ExtArgs>
   }
   export type BlockIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    page?: boolean | PageDefaultArgs<ExtArgs>
+    page?: boolean | Block$pageArgs<ExtArgs>
   }
 
   export type $BlockPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Block"
     objects: {
-      page: Prisma.$PagePayload<ExtArgs>
+      page: Prisma.$PagePayload<ExtArgs> | null
+      images: Prisma.$BlockImagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
+      locale: string | null
       title: string | null
       content: string | null
-      image: string | null
       createdAt: Date
       updatedAt: Date
-      pageId: string
+      pageId: string | null
     }, ExtArgs["result"]["block"]>
     composites: {}
   }
@@ -16672,7 +16964,8 @@ export namespace Prisma {
    */
   export interface Prisma__BlockClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    page<T extends PageDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PageDefaultArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    page<T extends Block$pageArgs<ExtArgs> = {}>(args?: Subset<T, Block$pageArgs<ExtArgs>>): Prisma__PageClient<$Result.GetResult<Prisma.$PagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    images<T extends Block$imagesArgs<ExtArgs> = {}>(args?: Subset<T, Block$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16704,9 +16997,9 @@ export namespace Prisma {
   interface BlockFieldRefs {
     readonly id: FieldRef<"Block", 'String'>
     readonly name: FieldRef<"Block", 'String'>
+    readonly locale: FieldRef<"Block", 'String'>
     readonly title: FieldRef<"Block", 'String'>
     readonly content: FieldRef<"Block", 'String'>
-    readonly image: FieldRef<"Block", 'String'>
     readonly createdAt: FieldRef<"Block", 'DateTime'>
     readonly updatedAt: FieldRef<"Block", 'DateTime'>
     readonly pageId: FieldRef<"Block", 'String'>
@@ -17106,6 +17399,49 @@ export namespace Prisma {
   }
 
   /**
+   * Block.page
+   */
+  export type Block$pageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Page
+     */
+    select?: PageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Page
+     */
+    omit?: PageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PageInclude<ExtArgs> | null
+    where?: PageWhereInput
+  }
+
+  /**
+   * Block.images
+   */
+  export type Block$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+    where?: BlockImageWhereInput
+    orderBy?: BlockImageOrderByWithRelationInput | BlockImageOrderByWithRelationInput[]
+    cursor?: BlockImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BlockImageScalarFieldEnum | BlockImageScalarFieldEnum[]
+  }
+
+  /**
    * Block without action
    */
   export type BlockDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -17125,6 +17461,2200 @@ export namespace Prisma {
 
 
   /**
+   * Model BlockImage
+   */
+
+  export type AggregateBlockImage = {
+    _count: BlockImageCountAggregateOutputType | null
+    _min: BlockImageMinAggregateOutputType | null
+    _max: BlockImageMaxAggregateOutputType | null
+  }
+
+  export type BlockImageMinAggregateOutputType = {
+    id: string | null
+    image: string | null
+    metaId: string | null
+    blockId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BlockImageMaxAggregateOutputType = {
+    id: string | null
+    image: string | null
+    metaId: string | null
+    blockId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BlockImageCountAggregateOutputType = {
+    id: number
+    image: number
+    metaId: number
+    blockId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BlockImageMinAggregateInputType = {
+    id?: true
+    image?: true
+    metaId?: true
+    blockId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BlockImageMaxAggregateInputType = {
+    id?: true
+    image?: true
+    metaId?: true
+    blockId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BlockImageCountAggregateInputType = {
+    id?: true
+    image?: true
+    metaId?: true
+    blockId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BlockImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BlockImage to aggregate.
+     */
+    where?: BlockImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlockImages to fetch.
+     */
+    orderBy?: BlockImageOrderByWithRelationInput | BlockImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BlockImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlockImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlockImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BlockImages
+    **/
+    _count?: true | BlockImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BlockImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BlockImageMaxAggregateInputType
+  }
+
+  export type GetBlockImageAggregateType<T extends BlockImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateBlockImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBlockImage[P]>
+      : GetScalarType<T[P], AggregateBlockImage[P]>
+  }
+
+
+
+
+  export type BlockImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BlockImageWhereInput
+    orderBy?: BlockImageOrderByWithAggregationInput | BlockImageOrderByWithAggregationInput[]
+    by: BlockImageScalarFieldEnum[] | BlockImageScalarFieldEnum
+    having?: BlockImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BlockImageCountAggregateInputType | true
+    _min?: BlockImageMinAggregateInputType
+    _max?: BlockImageMaxAggregateInputType
+  }
+
+  export type BlockImageGroupByOutputType = {
+    id: string
+    image: string
+    metaId: string | null
+    blockId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: BlockImageCountAggregateOutputType | null
+    _min: BlockImageMinAggregateOutputType | null
+    _max: BlockImageMaxAggregateOutputType | null
+  }
+
+  type GetBlockImageGroupByPayload<T extends BlockImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BlockImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BlockImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BlockImageGroupByOutputType[P]>
+            : GetScalarType<T[P], BlockImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BlockImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    metaId?: boolean
+    blockId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    block?: boolean | BlockImage$blockArgs<ExtArgs>
+    meta?: boolean | BlockImage$metaArgs<ExtArgs>
+  }, ExtArgs["result"]["blockImage"]>
+
+  export type BlockImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    metaId?: boolean
+    blockId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    block?: boolean | BlockImage$blockArgs<ExtArgs>
+    meta?: boolean | BlockImage$metaArgs<ExtArgs>
+  }, ExtArgs["result"]["blockImage"]>
+
+  export type BlockImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    metaId?: boolean
+    blockId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    block?: boolean | BlockImage$blockArgs<ExtArgs>
+    meta?: boolean | BlockImage$metaArgs<ExtArgs>
+  }, ExtArgs["result"]["blockImage"]>
+
+  export type BlockImageSelectScalar = {
+    id?: boolean
+    image?: boolean
+    metaId?: boolean
+    blockId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BlockImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image" | "metaId" | "blockId" | "createdAt" | "updatedAt", ExtArgs["result"]["blockImage"]>
+  export type BlockImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    block?: boolean | BlockImage$blockArgs<ExtArgs>
+    meta?: boolean | BlockImage$metaArgs<ExtArgs>
+  }
+  export type BlockImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    block?: boolean | BlockImage$blockArgs<ExtArgs>
+    meta?: boolean | BlockImage$metaArgs<ExtArgs>
+  }
+  export type BlockImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    block?: boolean | BlockImage$blockArgs<ExtArgs>
+    meta?: boolean | BlockImage$metaArgs<ExtArgs>
+  }
+
+  export type $BlockImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BlockImage"
+    objects: {
+      block: Prisma.$BlockPayload<ExtArgs> | null
+      meta: Prisma.$ImageMetaPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      image: string
+      metaId: string | null
+      blockId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["blockImage"]>
+    composites: {}
+  }
+
+  type BlockImageGetPayload<S extends boolean | null | undefined | BlockImageDefaultArgs> = $Result.GetResult<Prisma.$BlockImagePayload, S>
+
+  type BlockImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BlockImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BlockImageCountAggregateInputType | true
+    }
+
+  export interface BlockImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BlockImage'], meta: { name: 'BlockImage' } }
+    /**
+     * Find zero or one BlockImage that matches the filter.
+     * @param {BlockImageFindUniqueArgs} args - Arguments to find a BlockImage
+     * @example
+     * // Get one BlockImage
+     * const blockImage = await prisma.blockImage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BlockImageFindUniqueArgs>(args: SelectSubset<T, BlockImageFindUniqueArgs<ExtArgs>>): Prisma__BlockImageClient<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BlockImage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BlockImageFindUniqueOrThrowArgs} args - Arguments to find a BlockImage
+     * @example
+     * // Get one BlockImage
+     * const blockImage = await prisma.blockImage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BlockImageFindUniqueOrThrowArgs>(args: SelectSubset<T, BlockImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BlockImageClient<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BlockImage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockImageFindFirstArgs} args - Arguments to find a BlockImage
+     * @example
+     * // Get one BlockImage
+     * const blockImage = await prisma.blockImage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BlockImageFindFirstArgs>(args?: SelectSubset<T, BlockImageFindFirstArgs<ExtArgs>>): Prisma__BlockImageClient<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BlockImage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockImageFindFirstOrThrowArgs} args - Arguments to find a BlockImage
+     * @example
+     * // Get one BlockImage
+     * const blockImage = await prisma.blockImage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BlockImageFindFirstOrThrowArgs>(args?: SelectSubset<T, BlockImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__BlockImageClient<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BlockImages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BlockImages
+     * const blockImages = await prisma.blockImage.findMany()
+     * 
+     * // Get first 10 BlockImages
+     * const blockImages = await prisma.blockImage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const blockImageWithIdOnly = await prisma.blockImage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BlockImageFindManyArgs>(args?: SelectSubset<T, BlockImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BlockImage.
+     * @param {BlockImageCreateArgs} args - Arguments to create a BlockImage.
+     * @example
+     * // Create one BlockImage
+     * const BlockImage = await prisma.blockImage.create({
+     *   data: {
+     *     // ... data to create a BlockImage
+     *   }
+     * })
+     * 
+     */
+    create<T extends BlockImageCreateArgs>(args: SelectSubset<T, BlockImageCreateArgs<ExtArgs>>): Prisma__BlockImageClient<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BlockImages.
+     * @param {BlockImageCreateManyArgs} args - Arguments to create many BlockImages.
+     * @example
+     * // Create many BlockImages
+     * const blockImage = await prisma.blockImage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BlockImageCreateManyArgs>(args?: SelectSubset<T, BlockImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BlockImages and returns the data saved in the database.
+     * @param {BlockImageCreateManyAndReturnArgs} args - Arguments to create many BlockImages.
+     * @example
+     * // Create many BlockImages
+     * const blockImage = await prisma.blockImage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BlockImages and only return the `id`
+     * const blockImageWithIdOnly = await prisma.blockImage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BlockImageCreateManyAndReturnArgs>(args?: SelectSubset<T, BlockImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BlockImage.
+     * @param {BlockImageDeleteArgs} args - Arguments to delete one BlockImage.
+     * @example
+     * // Delete one BlockImage
+     * const BlockImage = await prisma.blockImage.delete({
+     *   where: {
+     *     // ... filter to delete one BlockImage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BlockImageDeleteArgs>(args: SelectSubset<T, BlockImageDeleteArgs<ExtArgs>>): Prisma__BlockImageClient<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BlockImage.
+     * @param {BlockImageUpdateArgs} args - Arguments to update one BlockImage.
+     * @example
+     * // Update one BlockImage
+     * const blockImage = await prisma.blockImage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BlockImageUpdateArgs>(args: SelectSubset<T, BlockImageUpdateArgs<ExtArgs>>): Prisma__BlockImageClient<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BlockImages.
+     * @param {BlockImageDeleteManyArgs} args - Arguments to filter BlockImages to delete.
+     * @example
+     * // Delete a few BlockImages
+     * const { count } = await prisma.blockImage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BlockImageDeleteManyArgs>(args?: SelectSubset<T, BlockImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BlockImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BlockImages
+     * const blockImage = await prisma.blockImage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BlockImageUpdateManyArgs>(args: SelectSubset<T, BlockImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BlockImages and returns the data updated in the database.
+     * @param {BlockImageUpdateManyAndReturnArgs} args - Arguments to update many BlockImages.
+     * @example
+     * // Update many BlockImages
+     * const blockImage = await prisma.blockImage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BlockImages and only return the `id`
+     * const blockImageWithIdOnly = await prisma.blockImage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BlockImageUpdateManyAndReturnArgs>(args: SelectSubset<T, BlockImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BlockImage.
+     * @param {BlockImageUpsertArgs} args - Arguments to update or create a BlockImage.
+     * @example
+     * // Update or create a BlockImage
+     * const blockImage = await prisma.blockImage.upsert({
+     *   create: {
+     *     // ... data to create a BlockImage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BlockImage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BlockImageUpsertArgs>(args: SelectSubset<T, BlockImageUpsertArgs<ExtArgs>>): Prisma__BlockImageClient<$Result.GetResult<Prisma.$BlockImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BlockImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockImageCountArgs} args - Arguments to filter BlockImages to count.
+     * @example
+     * // Count the number of BlockImages
+     * const count = await prisma.blockImage.count({
+     *   where: {
+     *     // ... the filter for the BlockImages we want to count
+     *   }
+     * })
+    **/
+    count<T extends BlockImageCountArgs>(
+      args?: Subset<T, BlockImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BlockImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BlockImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BlockImageAggregateArgs>(args: Subset<T, BlockImageAggregateArgs>): Prisma.PrismaPromise<GetBlockImageAggregateType<T>>
+
+    /**
+     * Group by BlockImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlockImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BlockImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BlockImageGroupByArgs['orderBy'] }
+        : { orderBy?: BlockImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BlockImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBlockImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BlockImage model
+   */
+  readonly fields: BlockImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BlockImage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BlockImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    block<T extends BlockImage$blockArgs<ExtArgs> = {}>(args?: Subset<T, BlockImage$blockArgs<ExtArgs>>): Prisma__BlockClient<$Result.GetResult<Prisma.$BlockPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    meta<T extends BlockImage$metaArgs<ExtArgs> = {}>(args?: Subset<T, BlockImage$metaArgs<ExtArgs>>): Prisma__ImageMetaClient<$Result.GetResult<Prisma.$ImageMetaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BlockImage model
+   */
+  interface BlockImageFieldRefs {
+    readonly id: FieldRef<"BlockImage", 'String'>
+    readonly image: FieldRef<"BlockImage", 'String'>
+    readonly metaId: FieldRef<"BlockImage", 'String'>
+    readonly blockId: FieldRef<"BlockImage", 'String'>
+    readonly createdAt: FieldRef<"BlockImage", 'DateTime'>
+    readonly updatedAt: FieldRef<"BlockImage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BlockImage findUnique
+   */
+  export type BlockImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+    /**
+     * Filter, which BlockImage to fetch.
+     */
+    where: BlockImageWhereUniqueInput
+  }
+
+  /**
+   * BlockImage findUniqueOrThrow
+   */
+  export type BlockImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+    /**
+     * Filter, which BlockImage to fetch.
+     */
+    where: BlockImageWhereUniqueInput
+  }
+
+  /**
+   * BlockImage findFirst
+   */
+  export type BlockImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+    /**
+     * Filter, which BlockImage to fetch.
+     */
+    where?: BlockImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlockImages to fetch.
+     */
+    orderBy?: BlockImageOrderByWithRelationInput | BlockImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BlockImages.
+     */
+    cursor?: BlockImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlockImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlockImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BlockImages.
+     */
+    distinct?: BlockImageScalarFieldEnum | BlockImageScalarFieldEnum[]
+  }
+
+  /**
+   * BlockImage findFirstOrThrow
+   */
+  export type BlockImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+    /**
+     * Filter, which BlockImage to fetch.
+     */
+    where?: BlockImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlockImages to fetch.
+     */
+    orderBy?: BlockImageOrderByWithRelationInput | BlockImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BlockImages.
+     */
+    cursor?: BlockImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlockImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlockImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BlockImages.
+     */
+    distinct?: BlockImageScalarFieldEnum | BlockImageScalarFieldEnum[]
+  }
+
+  /**
+   * BlockImage findMany
+   */
+  export type BlockImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+    /**
+     * Filter, which BlockImages to fetch.
+     */
+    where?: BlockImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BlockImages to fetch.
+     */
+    orderBy?: BlockImageOrderByWithRelationInput | BlockImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BlockImages.
+     */
+    cursor?: BlockImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BlockImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BlockImages.
+     */
+    skip?: number
+    distinct?: BlockImageScalarFieldEnum | BlockImageScalarFieldEnum[]
+  }
+
+  /**
+   * BlockImage create
+   */
+  export type BlockImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BlockImage.
+     */
+    data: XOR<BlockImageCreateInput, BlockImageUncheckedCreateInput>
+  }
+
+  /**
+   * BlockImage createMany
+   */
+  export type BlockImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BlockImages.
+     */
+    data: BlockImageCreateManyInput | BlockImageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BlockImage createManyAndReturn
+   */
+  export type BlockImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many BlockImages.
+     */
+    data: BlockImageCreateManyInput | BlockImageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BlockImage update
+   */
+  export type BlockImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BlockImage.
+     */
+    data: XOR<BlockImageUpdateInput, BlockImageUncheckedUpdateInput>
+    /**
+     * Choose, which BlockImage to update.
+     */
+    where: BlockImageWhereUniqueInput
+  }
+
+  /**
+   * BlockImage updateMany
+   */
+  export type BlockImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BlockImages.
+     */
+    data: XOR<BlockImageUpdateManyMutationInput, BlockImageUncheckedUpdateManyInput>
+    /**
+     * Filter which BlockImages to update
+     */
+    where?: BlockImageWhereInput
+    /**
+     * Limit how many BlockImages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BlockImage updateManyAndReturn
+   */
+  export type BlockImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * The data used to update BlockImages.
+     */
+    data: XOR<BlockImageUpdateManyMutationInput, BlockImageUncheckedUpdateManyInput>
+    /**
+     * Filter which BlockImages to update
+     */
+    where?: BlockImageWhereInput
+    /**
+     * Limit how many BlockImages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BlockImage upsert
+   */
+  export type BlockImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BlockImage to update in case it exists.
+     */
+    where: BlockImageWhereUniqueInput
+    /**
+     * In case the BlockImage found by the `where` argument doesn't exist, create a new BlockImage with this data.
+     */
+    create: XOR<BlockImageCreateInput, BlockImageUncheckedCreateInput>
+    /**
+     * In case the BlockImage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BlockImageUpdateInput, BlockImageUncheckedUpdateInput>
+  }
+
+  /**
+   * BlockImage delete
+   */
+  export type BlockImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+    /**
+     * Filter which BlockImage to delete.
+     */
+    where: BlockImageWhereUniqueInput
+  }
+
+  /**
+   * BlockImage deleteMany
+   */
+  export type BlockImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BlockImages to delete
+     */
+    where?: BlockImageWhereInput
+    /**
+     * Limit how many BlockImages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BlockImage.block
+   */
+  export type BlockImage$blockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Block
+     */
+    select?: BlockSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Block
+     */
+    omit?: BlockOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockInclude<ExtArgs> | null
+    where?: BlockWhereInput
+  }
+
+  /**
+   * BlockImage.meta
+   */
+  export type BlockImage$metaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImageMeta
+     */
+    select?: ImageMetaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImageMeta
+     */
+    omit?: ImageMetaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageMetaInclude<ExtArgs> | null
+    where?: ImageMetaWhereInput
+  }
+
+  /**
+   * BlockImage without action
+   */
+  export type BlockImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BlockImage
+     */
+    select?: BlockImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BlockImage
+     */
+    omit?: BlockImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlockImageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Image
+   */
+
+  export type AggregateImage = {
+    _count: ImageCountAggregateOutputType | null
+    _min: ImageMinAggregateOutputType | null
+    _max: ImageMaxAggregateOutputType | null
+  }
+
+  export type ImageMinAggregateOutputType = {
+    id: string | null
+    image: string | null
+    metaId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ImageMaxAggregateOutputType = {
+    id: string | null
+    image: string | null
+    metaId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ImageCountAggregateOutputType = {
+    id: number
+    image: number
+    metaId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ImageMinAggregateInputType = {
+    id?: true
+    image?: true
+    metaId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ImageMaxAggregateInputType = {
+    id?: true
+    image?: true
+    metaId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ImageCountAggregateInputType = {
+    id?: true
+    image?: true
+    metaId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Image to aggregate.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Images
+    **/
+    _count?: true | ImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ImageMaxAggregateInputType
+  }
+
+  export type GetImageAggregateType<T extends ImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateImage[P]>
+      : GetScalarType<T[P], AggregateImage[P]>
+  }
+
+
+
+
+  export type ImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImageWhereInput
+    orderBy?: ImageOrderByWithAggregationInput | ImageOrderByWithAggregationInput[]
+    by: ImageScalarFieldEnum[] | ImageScalarFieldEnum
+    having?: ImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ImageCountAggregateInputType | true
+    _min?: ImageMinAggregateInputType
+    _max?: ImageMaxAggregateInputType
+  }
+
+  export type ImageGroupByOutputType = {
+    id: string
+    image: string
+    metaId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: ImageCountAggregateOutputType | null
+    _min: ImageMinAggregateOutputType | null
+    _max: ImageMaxAggregateOutputType | null
+  }
+
+  type GetImageGroupByPayload<T extends ImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ImageGroupByOutputType[P]>
+            : GetScalarType<T[P], ImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    metaId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    meta?: boolean | Image$metaArgs<ExtArgs>
+  }, ExtArgs["result"]["image"]>
+
+  export type ImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    metaId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    meta?: boolean | Image$metaArgs<ExtArgs>
+  }, ExtArgs["result"]["image"]>
+
+  export type ImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    metaId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    meta?: boolean | Image$metaArgs<ExtArgs>
+  }, ExtArgs["result"]["image"]>
+
+  export type ImageSelectScalar = {
+    id?: boolean
+    image?: boolean
+    metaId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image" | "metaId" | "createdAt" | "updatedAt", ExtArgs["result"]["image"]>
+  export type ImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meta?: boolean | Image$metaArgs<ExtArgs>
+  }
+  export type ImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meta?: boolean | Image$metaArgs<ExtArgs>
+  }
+  export type ImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    meta?: boolean | Image$metaArgs<ExtArgs>
+  }
+
+  export type $ImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Image"
+    objects: {
+      meta: Prisma.$ImageMetaPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      image: string
+      metaId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["image"]>
+    composites: {}
+  }
+
+  type ImageGetPayload<S extends boolean | null | undefined | ImageDefaultArgs> = $Result.GetResult<Prisma.$ImagePayload, S>
+
+  type ImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ImageCountAggregateInputType | true
+    }
+
+  export interface ImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Image'], meta: { name: 'Image' } }
+    /**
+     * Find zero or one Image that matches the filter.
+     * @param {ImageFindUniqueArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ImageFindUniqueArgs>(args: SelectSubset<T, ImageFindUniqueArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Image that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ImageFindUniqueOrThrowArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ImageFindUniqueOrThrowArgs>(args: SelectSubset<T, ImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Image that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageFindFirstArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ImageFindFirstArgs>(args?: SelectSubset<T, ImageFindFirstArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Image that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageFindFirstOrThrowArgs} args - Arguments to find a Image
+     * @example
+     * // Get one Image
+     * const image = await prisma.image.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ImageFindFirstOrThrowArgs>(args?: SelectSubset<T, ImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Images
+     * const images = await prisma.image.findMany()
+     * 
+     * // Get first 10 Images
+     * const images = await prisma.image.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const imageWithIdOnly = await prisma.image.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ImageFindManyArgs>(args?: SelectSubset<T, ImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Image.
+     * @param {ImageCreateArgs} args - Arguments to create a Image.
+     * @example
+     * // Create one Image
+     * const Image = await prisma.image.create({
+     *   data: {
+     *     // ... data to create a Image
+     *   }
+     * })
+     * 
+     */
+    create<T extends ImageCreateArgs>(args: SelectSubset<T, ImageCreateArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Images.
+     * @param {ImageCreateManyArgs} args - Arguments to create many Images.
+     * @example
+     * // Create many Images
+     * const image = await prisma.image.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ImageCreateManyArgs>(args?: SelectSubset<T, ImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Images and returns the data saved in the database.
+     * @param {ImageCreateManyAndReturnArgs} args - Arguments to create many Images.
+     * @example
+     * // Create many Images
+     * const image = await prisma.image.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Images and only return the `id`
+     * const imageWithIdOnly = await prisma.image.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ImageCreateManyAndReturnArgs>(args?: SelectSubset<T, ImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Image.
+     * @param {ImageDeleteArgs} args - Arguments to delete one Image.
+     * @example
+     * // Delete one Image
+     * const Image = await prisma.image.delete({
+     *   where: {
+     *     // ... filter to delete one Image
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ImageDeleteArgs>(args: SelectSubset<T, ImageDeleteArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Image.
+     * @param {ImageUpdateArgs} args - Arguments to update one Image.
+     * @example
+     * // Update one Image
+     * const image = await prisma.image.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ImageUpdateArgs>(args: SelectSubset<T, ImageUpdateArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Images.
+     * @param {ImageDeleteManyArgs} args - Arguments to filter Images to delete.
+     * @example
+     * // Delete a few Images
+     * const { count } = await prisma.image.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ImageDeleteManyArgs>(args?: SelectSubset<T, ImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Images
+     * const image = await prisma.image.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ImageUpdateManyArgs>(args: SelectSubset<T, ImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Images and returns the data updated in the database.
+     * @param {ImageUpdateManyAndReturnArgs} args - Arguments to update many Images.
+     * @example
+     * // Update many Images
+     * const image = await prisma.image.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Images and only return the `id`
+     * const imageWithIdOnly = await prisma.image.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ImageUpdateManyAndReturnArgs>(args: SelectSubset<T, ImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Image.
+     * @param {ImageUpsertArgs} args - Arguments to update or create a Image.
+     * @example
+     * // Update or create a Image
+     * const image = await prisma.image.upsert({
+     *   create: {
+     *     // ... data to create a Image
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Image we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ImageUpsertArgs>(args: SelectSubset<T, ImageUpsertArgs<ExtArgs>>): Prisma__ImageClient<$Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageCountArgs} args - Arguments to filter Images to count.
+     * @example
+     * // Count the number of Images
+     * const count = await prisma.image.count({
+     *   where: {
+     *     // ... the filter for the Images we want to count
+     *   }
+     * })
+    **/
+    count<T extends ImageCountArgs>(
+      args?: Subset<T, ImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Image.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ImageAggregateArgs>(args: Subset<T, ImageAggregateArgs>): Prisma.PrismaPromise<GetImageAggregateType<T>>
+
+    /**
+     * Group by Image.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ImageGroupByArgs['orderBy'] }
+        : { orderBy?: ImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Image model
+   */
+  readonly fields: ImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Image.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    meta<T extends Image$metaArgs<ExtArgs> = {}>(args?: Subset<T, Image$metaArgs<ExtArgs>>): Prisma__ImageMetaClient<$Result.GetResult<Prisma.$ImageMetaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Image model
+   */
+  interface ImageFieldRefs {
+    readonly id: FieldRef<"Image", 'String'>
+    readonly image: FieldRef<"Image", 'String'>
+    readonly metaId: FieldRef<"Image", 'String'>
+    readonly createdAt: FieldRef<"Image", 'DateTime'>
+    readonly updatedAt: FieldRef<"Image", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Image findUnique
+   */
+  export type ImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image findUniqueOrThrow
+   */
+  export type ImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image findFirst
+   */
+  export type ImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Images.
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Images.
+     */
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * Image findFirstOrThrow
+   */
+  export type ImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Image to fetch.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Images.
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Images.
+     */
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * Image findMany
+   */
+  export type ImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter, which Images to fetch.
+     */
+    where?: ImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Images to fetch.
+     */
+    orderBy?: ImageOrderByWithRelationInput | ImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Images.
+     */
+    cursor?: ImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Images.
+     */
+    skip?: number
+    distinct?: ImageScalarFieldEnum | ImageScalarFieldEnum[]
+  }
+
+  /**
+   * Image create
+   */
+  export type ImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Image.
+     */
+    data: XOR<ImageCreateInput, ImageUncheckedCreateInput>
+  }
+
+  /**
+   * Image createMany
+   */
+  export type ImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Images.
+     */
+    data: ImageCreateManyInput | ImageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Image createManyAndReturn
+   */
+  export type ImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many Images.
+     */
+    data: ImageCreateManyInput | ImageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Image update
+   */
+  export type ImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Image.
+     */
+    data: XOR<ImageUpdateInput, ImageUncheckedUpdateInput>
+    /**
+     * Choose, which Image to update.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image updateMany
+   */
+  export type ImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Images.
+     */
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyInput>
+    /**
+     * Filter which Images to update
+     */
+    where?: ImageWhereInput
+    /**
+     * Limit how many Images to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Image updateManyAndReturn
+   */
+  export type ImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * The data used to update Images.
+     */
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyInput>
+    /**
+     * Filter which Images to update
+     */
+    where?: ImageWhereInput
+    /**
+     * Limit how many Images to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Image upsert
+   */
+  export type ImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Image to update in case it exists.
+     */
+    where: ImageWhereUniqueInput
+    /**
+     * In case the Image found by the `where` argument doesn't exist, create a new Image with this data.
+     */
+    create: XOR<ImageCreateInput, ImageUncheckedCreateInput>
+    /**
+     * In case the Image was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ImageUpdateInput, ImageUncheckedUpdateInput>
+  }
+
+  /**
+   * Image delete
+   */
+  export type ImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+    /**
+     * Filter which Image to delete.
+     */
+    where: ImageWhereUniqueInput
+  }
+
+  /**
+   * Image deleteMany
+   */
+  export type ImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Images to delete
+     */
+    where?: ImageWhereInput
+    /**
+     * Limit how many Images to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Image.meta
+   */
+  export type Image$metaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ImageMeta
+     */
+    select?: ImageMetaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ImageMeta
+     */
+    omit?: ImageMetaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageMetaInclude<ExtArgs> | null
+    where?: ImageMetaWhereInput
+  }
+
+  /**
+   * Image without action
+   */
+  export type ImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Image
+     */
+    select?: ImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Image
+     */
+    omit?: ImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ImageInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Gallery
    */
 
@@ -17137,6 +19667,7 @@ export namespace Prisma {
   export type GalleryMinAggregateOutputType = {
     id: string | null
     name: string | null
+    locale: string | null
     title: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -17146,6 +19677,7 @@ export namespace Prisma {
   export type GalleryMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    locale: string | null
     title: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -17155,6 +19687,7 @@ export namespace Prisma {
   export type GalleryCountAggregateOutputType = {
     id: number
     name: number
+    locale: number
     title: number
     images: number
     createdAt: number
@@ -17167,6 +19700,7 @@ export namespace Prisma {
   export type GalleryMinAggregateInputType = {
     id?: true
     name?: true
+    locale?: true
     title?: true
     createdAt?: true
     updatedAt?: true
@@ -17176,6 +19710,7 @@ export namespace Prisma {
   export type GalleryMaxAggregateInputType = {
     id?: true
     name?: true
+    locale?: true
     title?: true
     createdAt?: true
     updatedAt?: true
@@ -17185,6 +19720,7 @@ export namespace Prisma {
   export type GalleryCountAggregateInputType = {
     id?: true
     name?: true
+    locale?: true
     title?: true
     images?: true
     createdAt?: true
@@ -17268,6 +19804,7 @@ export namespace Prisma {
   export type GalleryGroupByOutputType = {
     id: string
     name: string
+    locale: string | null
     title: string | null
     images: string[]
     createdAt: Date
@@ -17295,6 +19832,7 @@ export namespace Prisma {
   export type GallerySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    locale?: boolean
     title?: boolean
     images?: boolean
     createdAt?: boolean
@@ -17306,6 +19844,7 @@ export namespace Prisma {
   export type GallerySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    locale?: boolean
     title?: boolean
     images?: boolean
     createdAt?: boolean
@@ -17317,6 +19856,7 @@ export namespace Prisma {
   export type GallerySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    locale?: boolean
     title?: boolean
     images?: boolean
     createdAt?: boolean
@@ -17328,6 +19868,7 @@ export namespace Prisma {
   export type GallerySelectScalar = {
     id?: boolean
     name?: boolean
+    locale?: boolean
     title?: boolean
     images?: boolean
     createdAt?: boolean
@@ -17335,7 +19876,7 @@ export namespace Prisma {
     pageId?: boolean
   }
 
-  export type GalleryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "title" | "images" | "createdAt" | "updatedAt" | "pageId", ExtArgs["result"]["gallery"]>
+  export type GalleryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "locale" | "title" | "images" | "createdAt" | "updatedAt" | "pageId", ExtArgs["result"]["gallery"]>
   export type GalleryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     page?: boolean | PageDefaultArgs<ExtArgs>
   }
@@ -17354,6 +19895,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
+      locale: string | null
       title: string | null
       images: string[]
       createdAt: Date
@@ -17785,6 +20327,7 @@ export namespace Prisma {
   interface GalleryFieldRefs {
     readonly id: FieldRef<"Gallery", 'String'>
     readonly name: FieldRef<"Gallery", 'String'>
+    readonly locale: FieldRef<"Gallery", 'String'>
     readonly title: FieldRef<"Gallery", 'String'>
     readonly images: FieldRef<"Gallery", 'String[]'>
     readonly createdAt: FieldRef<"Gallery", 'DateTime'>
@@ -19400,9 +21943,9 @@ export namespace Prisma {
   export const BlockScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    locale: 'locale',
     title: 'title',
     content: 'content',
-    image: 'image',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     pageId: 'pageId'
@@ -19411,9 +21954,33 @@ export namespace Prisma {
   export type BlockScalarFieldEnum = (typeof BlockScalarFieldEnum)[keyof typeof BlockScalarFieldEnum]
 
 
+  export const BlockImageScalarFieldEnum: {
+    id: 'id',
+    image: 'image',
+    metaId: 'metaId',
+    blockId: 'blockId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BlockImageScalarFieldEnum = (typeof BlockImageScalarFieldEnum)[keyof typeof BlockImageScalarFieldEnum]
+
+
+  export const ImageScalarFieldEnum: {
+    id: 'id',
+    image: 'image',
+    metaId: 'metaId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
+
+
   export const GalleryScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    locale: 'locale',
     title: 'title',
     images: 'images',
     createdAt: 'createdAt',
@@ -20121,6 +22688,8 @@ export namespace Prisma {
     drawingsImages?: DrawingsImageListRelationFilter
     Category?: CategoryListRelationFilter
     Product?: ProductListRelationFilter
+    BlockImage?: BlockImageListRelationFilter
+    Image?: ImageListRelationFilter
   }
 
   export type ImageMetaOrderByWithRelationInput = {
@@ -20134,6 +22703,8 @@ export namespace Prisma {
     drawingsImages?: DrawingsImageOrderByRelationAggregateInput
     Category?: CategoryOrderByRelationAggregateInput
     Product?: ProductOrderByRelationAggregateInput
+    BlockImage?: BlockImageOrderByRelationAggregateInput
+    Image?: ImageOrderByRelationAggregateInput
   }
 
   export type ImageMetaWhereUniqueInput = Prisma.AtLeast<{
@@ -20150,6 +22721,8 @@ export namespace Prisma {
     drawingsImages?: DrawingsImageListRelationFilter
     Category?: CategoryListRelationFilter
     Product?: ProductListRelationFilter
+    BlockImage?: BlockImageListRelationFilter
+    Image?: ImageListRelationFilter
   }, "id">
 
   export type ImageMetaOrderByWithAggregationInput = {
@@ -20442,25 +23015,27 @@ export namespace Prisma {
     NOT?: BlockWhereInput | BlockWhereInput[]
     id?: StringFilter<"Block"> | string
     name?: StringFilter<"Block"> | string
+    locale?: StringNullableFilter<"Block"> | string | null
     title?: StringNullableFilter<"Block"> | string | null
     content?: StringNullableFilter<"Block"> | string | null
-    image?: StringNullableFilter<"Block"> | string | null
     createdAt?: DateTimeFilter<"Block"> | Date | string
     updatedAt?: DateTimeFilter<"Block"> | Date | string
-    pageId?: StringFilter<"Block"> | string
-    page?: XOR<PageScalarRelationFilter, PageWhereInput>
+    pageId?: StringNullableFilter<"Block"> | string | null
+    page?: XOR<PageNullableScalarRelationFilter, PageWhereInput> | null
+    images?: BlockImageListRelationFilter
   }
 
   export type BlockOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    locale?: SortOrderInput | SortOrder
     title?: SortOrderInput | SortOrder
     content?: SortOrderInput | SortOrder
-    image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    pageId?: SortOrder
+    pageId?: SortOrderInput | SortOrder
     page?: PageOrderByWithRelationInput
+    images?: BlockImageOrderByRelationAggregateInput
   }
 
   export type BlockWhereUniqueInput = Prisma.AtLeast<{
@@ -20469,24 +23044,25 @@ export namespace Prisma {
     OR?: BlockWhereInput[]
     NOT?: BlockWhereInput | BlockWhereInput[]
     name?: StringFilter<"Block"> | string
+    locale?: StringNullableFilter<"Block"> | string | null
     title?: StringNullableFilter<"Block"> | string | null
     content?: StringNullableFilter<"Block"> | string | null
-    image?: StringNullableFilter<"Block"> | string | null
     createdAt?: DateTimeFilter<"Block"> | Date | string
     updatedAt?: DateTimeFilter<"Block"> | Date | string
-    pageId?: StringFilter<"Block"> | string
-    page?: XOR<PageScalarRelationFilter, PageWhereInput>
+    pageId?: StringNullableFilter<"Block"> | string | null
+    page?: XOR<PageNullableScalarRelationFilter, PageWhereInput> | null
+    images?: BlockImageListRelationFilter
   }, "id">
 
   export type BlockOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    locale?: SortOrderInput | SortOrder
     title?: SortOrderInput | SortOrder
     content?: SortOrderInput | SortOrder
-    image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    pageId?: SortOrder
+    pageId?: SortOrderInput | SortOrder
     _count?: BlockCountOrderByAggregateInput
     _max?: BlockMaxOrderByAggregateInput
     _min?: BlockMinOrderByAggregateInput
@@ -20498,12 +23074,130 @@ export namespace Prisma {
     NOT?: BlockScalarWhereWithAggregatesInput | BlockScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Block"> | string
     name?: StringWithAggregatesFilter<"Block"> | string
+    locale?: StringNullableWithAggregatesFilter<"Block"> | string | null
     title?: StringNullableWithAggregatesFilter<"Block"> | string | null
     content?: StringNullableWithAggregatesFilter<"Block"> | string | null
-    image?: StringNullableWithAggregatesFilter<"Block"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Block"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Block"> | Date | string
-    pageId?: StringWithAggregatesFilter<"Block"> | string
+    pageId?: StringNullableWithAggregatesFilter<"Block"> | string | null
+  }
+
+  export type BlockImageWhereInput = {
+    AND?: BlockImageWhereInput | BlockImageWhereInput[]
+    OR?: BlockImageWhereInput[]
+    NOT?: BlockImageWhereInput | BlockImageWhereInput[]
+    id?: StringFilter<"BlockImage"> | string
+    image?: StringFilter<"BlockImage"> | string
+    metaId?: StringNullableFilter<"BlockImage"> | string | null
+    blockId?: StringNullableFilter<"BlockImage"> | string | null
+    createdAt?: DateTimeFilter<"BlockImage"> | Date | string
+    updatedAt?: DateTimeFilter<"BlockImage"> | Date | string
+    block?: XOR<BlockNullableScalarRelationFilter, BlockWhereInput> | null
+    meta?: XOR<ImageMetaNullableScalarRelationFilter, ImageMetaWhereInput> | null
+  }
+
+  export type BlockImageOrderByWithRelationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    metaId?: SortOrderInput | SortOrder
+    blockId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    block?: BlockOrderByWithRelationInput
+    meta?: ImageMetaOrderByWithRelationInput
+  }
+
+  export type BlockImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BlockImageWhereInput | BlockImageWhereInput[]
+    OR?: BlockImageWhereInput[]
+    NOT?: BlockImageWhereInput | BlockImageWhereInput[]
+    image?: StringFilter<"BlockImage"> | string
+    metaId?: StringNullableFilter<"BlockImage"> | string | null
+    blockId?: StringNullableFilter<"BlockImage"> | string | null
+    createdAt?: DateTimeFilter<"BlockImage"> | Date | string
+    updatedAt?: DateTimeFilter<"BlockImage"> | Date | string
+    block?: XOR<BlockNullableScalarRelationFilter, BlockWhereInput> | null
+    meta?: XOR<ImageMetaNullableScalarRelationFilter, ImageMetaWhereInput> | null
+  }, "id">
+
+  export type BlockImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    metaId?: SortOrderInput | SortOrder
+    blockId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BlockImageCountOrderByAggregateInput
+    _max?: BlockImageMaxOrderByAggregateInput
+    _min?: BlockImageMinOrderByAggregateInput
+  }
+
+  export type BlockImageScalarWhereWithAggregatesInput = {
+    AND?: BlockImageScalarWhereWithAggregatesInput | BlockImageScalarWhereWithAggregatesInput[]
+    OR?: BlockImageScalarWhereWithAggregatesInput[]
+    NOT?: BlockImageScalarWhereWithAggregatesInput | BlockImageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BlockImage"> | string
+    image?: StringWithAggregatesFilter<"BlockImage"> | string
+    metaId?: StringNullableWithAggregatesFilter<"BlockImage"> | string | null
+    blockId?: StringNullableWithAggregatesFilter<"BlockImage"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"BlockImage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BlockImage"> | Date | string
+  }
+
+  export type ImageWhereInput = {
+    AND?: ImageWhereInput | ImageWhereInput[]
+    OR?: ImageWhereInput[]
+    NOT?: ImageWhereInput | ImageWhereInput[]
+    id?: StringFilter<"Image"> | string
+    image?: StringFilter<"Image"> | string
+    metaId?: StringNullableFilter<"Image"> | string | null
+    createdAt?: DateTimeFilter<"Image"> | Date | string
+    updatedAt?: DateTimeFilter<"Image"> | Date | string
+    meta?: XOR<ImageMetaNullableScalarRelationFilter, ImageMetaWhereInput> | null
+  }
+
+  export type ImageOrderByWithRelationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    metaId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    meta?: ImageMetaOrderByWithRelationInput
+  }
+
+  export type ImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ImageWhereInput | ImageWhereInput[]
+    OR?: ImageWhereInput[]
+    NOT?: ImageWhereInput | ImageWhereInput[]
+    image?: StringFilter<"Image"> | string
+    metaId?: StringNullableFilter<"Image"> | string | null
+    createdAt?: DateTimeFilter<"Image"> | Date | string
+    updatedAt?: DateTimeFilter<"Image"> | Date | string
+    meta?: XOR<ImageMetaNullableScalarRelationFilter, ImageMetaWhereInput> | null
+  }, "id">
+
+  export type ImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    metaId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ImageCountOrderByAggregateInput
+    _max?: ImageMaxOrderByAggregateInput
+    _min?: ImageMinOrderByAggregateInput
+  }
+
+  export type ImageScalarWhereWithAggregatesInput = {
+    AND?: ImageScalarWhereWithAggregatesInput | ImageScalarWhereWithAggregatesInput[]
+    OR?: ImageScalarWhereWithAggregatesInput[]
+    NOT?: ImageScalarWhereWithAggregatesInput | ImageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Image"> | string
+    image?: StringWithAggregatesFilter<"Image"> | string
+    metaId?: StringNullableWithAggregatesFilter<"Image"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Image"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Image"> | Date | string
   }
 
   export type GalleryWhereInput = {
@@ -20512,6 +23206,7 @@ export namespace Prisma {
     NOT?: GalleryWhereInput | GalleryWhereInput[]
     id?: StringFilter<"Gallery"> | string
     name?: StringFilter<"Gallery"> | string
+    locale?: StringNullableFilter<"Gallery"> | string | null
     title?: StringNullableFilter<"Gallery"> | string | null
     images?: StringNullableListFilter<"Gallery">
     createdAt?: DateTimeFilter<"Gallery"> | Date | string
@@ -20523,6 +23218,7 @@ export namespace Prisma {
   export type GalleryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    locale?: SortOrderInput | SortOrder
     title?: SortOrderInput | SortOrder
     images?: SortOrder
     createdAt?: SortOrder
@@ -20537,6 +23233,7 @@ export namespace Prisma {
     OR?: GalleryWhereInput[]
     NOT?: GalleryWhereInput | GalleryWhereInput[]
     name?: StringFilter<"Gallery"> | string
+    locale?: StringNullableFilter<"Gallery"> | string | null
     title?: StringNullableFilter<"Gallery"> | string | null
     images?: StringNullableListFilter<"Gallery">
     createdAt?: DateTimeFilter<"Gallery"> | Date | string
@@ -20548,6 +23245,7 @@ export namespace Prisma {
   export type GalleryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    locale?: SortOrderInput | SortOrder
     title?: SortOrderInput | SortOrder
     images?: SortOrder
     createdAt?: SortOrder
@@ -20564,6 +23262,7 @@ export namespace Prisma {
     NOT?: GalleryScalarWhereWithAggregatesInput | GalleryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Gallery"> | string
     name?: StringWithAggregatesFilter<"Gallery"> | string
+    locale?: StringNullableWithAggregatesFilter<"Gallery"> | string | null
     title?: StringNullableWithAggregatesFilter<"Gallery"> | string | null
     images?: StringNullableListFilter<"Gallery">
     createdAt?: DateTimeWithAggregatesFilter<"Gallery"> | Date | string
@@ -21277,6 +23976,8 @@ export namespace Prisma {
     drawingsImages?: DrawingsImageCreateNestedManyWithoutMetaInput
     Category?: CategoryCreateNestedManyWithoutImageMetaInput
     Product?: ProductCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageCreateNestedManyWithoutMetaInput
+    Image?: ImageCreateNestedManyWithoutMetaInput
   }
 
   export type ImageMetaUncheckedCreateInput = {
@@ -21290,6 +23991,8 @@ export namespace Prisma {
     drawingsImages?: DrawingsImageUncheckedCreateNestedManyWithoutMetaInput
     Category?: CategoryUncheckedCreateNestedManyWithoutImageMetaInput
     Product?: ProductUncheckedCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageUncheckedCreateNestedManyWithoutMetaInput
+    Image?: ImageUncheckedCreateNestedManyWithoutMetaInput
   }
 
   export type ImageMetaUpdateInput = {
@@ -21303,6 +24006,8 @@ export namespace Prisma {
     drawingsImages?: DrawingsImageUpdateManyWithoutMetaNestedInput
     Category?: CategoryUpdateManyWithoutImageMetaNestedInput
     Product?: ProductUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUpdateManyWithoutMetaNestedInput
+    Image?: ImageUpdateManyWithoutMetaNestedInput
   }
 
   export type ImageMetaUncheckedUpdateInput = {
@@ -21316,6 +24021,8 @@ export namespace Prisma {
     drawingsImages?: DrawingsImageUncheckedUpdateManyWithoutMetaNestedInput
     Category?: CategoryUncheckedUpdateManyWithoutImageMetaNestedInput
     Product?: ProductUncheckedUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUncheckedUpdateManyWithoutMetaNestedInput
+    Image?: ImageUncheckedUpdateManyWithoutMetaNestedInput
   }
 
   export type ImageMetaCreateManyInput = {
@@ -21623,64 +24330,68 @@ export namespace Prisma {
   export type BlockCreateInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     content?: string | null
-    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    page: PageCreateNestedOneWithoutBlocksInput
+    page?: PageCreateNestedOneWithoutBlocksInput
+    images?: BlockImageCreateNestedManyWithoutBlockInput
   }
 
   export type BlockUncheckedCreateInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     content?: string | null
-    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    pageId: string
+    pageId?: string | null
+    images?: BlockImageUncheckedCreateNestedManyWithoutBlockInput
   }
 
   export type BlockUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    page?: PageUpdateOneRequiredWithoutBlocksNestedInput
+    page?: PageUpdateOneWithoutBlocksNestedInput
+    images?: BlockImageUpdateManyWithoutBlockNestedInput
   }
 
   export type BlockUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    pageId?: StringFieldUpdateOperationsInput | string
+    pageId?: NullableStringFieldUpdateOperationsInput | string | null
+    images?: BlockImageUncheckedUpdateManyWithoutBlockNestedInput
   }
 
   export type BlockCreateManyInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     content?: string | null
-    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    pageId: string
+    pageId?: string | null
   }
 
   export type BlockUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -21688,17 +24399,134 @@ export namespace Prisma {
   export type BlockUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    pageId?: StringFieldUpdateOperationsInput | string
+    pageId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type BlockImageCreateInput = {
+    id?: string
+    image: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    block?: BlockCreateNestedOneWithoutImagesInput
+    meta?: ImageMetaCreateNestedOneWithoutBlockImageInput
+  }
+
+  export type BlockImageUncheckedCreateInput = {
+    id?: string
+    image: string
+    metaId?: string | null
+    blockId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BlockImageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    block?: BlockUpdateOneWithoutImagesNestedInput
+    meta?: ImageMetaUpdateOneWithoutBlockImageNestedInput
+  }
+
+  export type BlockImageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    metaId?: NullableStringFieldUpdateOperationsInput | string | null
+    blockId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlockImageCreateManyInput = {
+    id?: string
+    image: string
+    metaId?: string | null
+    blockId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BlockImageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlockImageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    metaId?: NullableStringFieldUpdateOperationsInput | string | null
+    blockId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImageCreateInput = {
+    id?: string
+    image: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meta?: ImageMetaCreateNestedOneWithoutImageInput
+  }
+
+  export type ImageUncheckedCreateInput = {
+    id?: string
+    image: string
+    metaId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ImageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meta?: ImageMetaUpdateOneWithoutImageNestedInput
+  }
+
+  export type ImageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    metaId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImageCreateManyInput = {
+    id?: string
+    image: string
+    metaId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ImageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    metaId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GalleryCreateInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     images?: GalleryCreateimagesInput | string[]
     createdAt?: Date | string
@@ -21709,6 +24537,7 @@ export namespace Prisma {
   export type GalleryUncheckedCreateInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     images?: GalleryCreateimagesInput | string[]
     createdAt?: Date | string
@@ -21719,6 +24548,7 @@ export namespace Prisma {
   export type GalleryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     images?: GalleryUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21729,6 +24559,7 @@ export namespace Prisma {
   export type GalleryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     images?: GalleryUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21739,6 +24570,7 @@ export namespace Prisma {
   export type GalleryCreateManyInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     images?: GalleryCreateimagesInput | string[]
     createdAt?: Date | string
@@ -21749,6 +24581,7 @@ export namespace Prisma {
   export type GalleryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     images?: GalleryUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21758,6 +24591,7 @@ export namespace Prisma {
   export type GalleryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     images?: GalleryUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22364,7 +25198,27 @@ export namespace Prisma {
     none?: CategoryWhereInput
   }
 
+  export type BlockImageListRelationFilter = {
+    every?: BlockImageWhereInput
+    some?: BlockImageWhereInput
+    none?: BlockImageWhereInput
+  }
+
+  export type ImageListRelationFilter = {
+    every?: ImageWhereInput
+    some?: ImageWhereInput
+    none?: ImageWhereInput
+  }
+
   export type CategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BlockImageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ImageOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -22534,17 +25388,17 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PageScalarRelationFilter = {
-    is?: PageWhereInput
-    isNot?: PageWhereInput
+  export type PageNullableScalarRelationFilter = {
+    is?: PageWhereInput | null
+    isNot?: PageWhereInput | null
   }
 
   export type BlockCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    locale?: SortOrder
     title?: SortOrder
     content?: SortOrder
-    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     pageId?: SortOrder
@@ -22553,9 +25407,9 @@ export namespace Prisma {
   export type BlockMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    locale?: SortOrder
     title?: SortOrder
     content?: SortOrder
-    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     pageId?: SortOrder
@@ -22564,17 +25418,79 @@ export namespace Prisma {
   export type BlockMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    locale?: SortOrder
     title?: SortOrder
     content?: SortOrder
-    image?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     pageId?: SortOrder
   }
 
+  export type BlockNullableScalarRelationFilter = {
+    is?: BlockWhereInput | null
+    isNot?: BlockWhereInput | null
+  }
+
+  export type BlockImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    metaId?: SortOrder
+    blockId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BlockImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    metaId?: SortOrder
+    blockId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BlockImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    metaId?: SortOrder
+    blockId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    metaId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    metaId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    metaId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PageScalarRelationFilter = {
+    is?: PageWhereInput
+    isNot?: PageWhereInput
+  }
+
   export type GalleryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    locale?: SortOrder
     title?: SortOrder
     images?: SortOrder
     createdAt?: SortOrder
@@ -22585,6 +25501,7 @@ export namespace Prisma {
   export type GalleryMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    locale?: SortOrder
     title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -22594,6 +25511,7 @@ export namespace Prisma {
   export type GalleryMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    locale?: SortOrder
     title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -23083,6 +26001,20 @@ export namespace Prisma {
     connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
   }
 
+  export type BlockImageCreateNestedManyWithoutMetaInput = {
+    create?: XOR<BlockImageCreateWithoutMetaInput, BlockImageUncheckedCreateWithoutMetaInput> | BlockImageCreateWithoutMetaInput[] | BlockImageUncheckedCreateWithoutMetaInput[]
+    connectOrCreate?: BlockImageCreateOrConnectWithoutMetaInput | BlockImageCreateOrConnectWithoutMetaInput[]
+    createMany?: BlockImageCreateManyMetaInputEnvelope
+    connect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+  }
+
+  export type ImageCreateNestedManyWithoutMetaInput = {
+    create?: XOR<ImageCreateWithoutMetaInput, ImageUncheckedCreateWithoutMetaInput> | ImageCreateWithoutMetaInput[] | ImageUncheckedCreateWithoutMetaInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutMetaInput | ImageCreateOrConnectWithoutMetaInput[]
+    createMany?: ImageCreateManyMetaInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+  }
+
   export type PromoImageUncheckedCreateNestedManyWithoutMetaInput = {
     create?: XOR<PromoImageCreateWithoutMetaInput, PromoImageUncheckedCreateWithoutMetaInput> | PromoImageCreateWithoutMetaInput[] | PromoImageUncheckedCreateWithoutMetaInput[]
     connectOrCreate?: PromoImageCreateOrConnectWithoutMetaInput | PromoImageCreateOrConnectWithoutMetaInput[]
@@ -23109,6 +26041,20 @@ export namespace Prisma {
     connectOrCreate?: ProductCreateOrConnectWithoutImageMetaInput | ProductCreateOrConnectWithoutImageMetaInput[]
     createMany?: ProductCreateManyImageMetaInputEnvelope
     connect?: ProductWhereUniqueInput | ProductWhereUniqueInput[]
+  }
+
+  export type BlockImageUncheckedCreateNestedManyWithoutMetaInput = {
+    create?: XOR<BlockImageCreateWithoutMetaInput, BlockImageUncheckedCreateWithoutMetaInput> | BlockImageCreateWithoutMetaInput[] | BlockImageUncheckedCreateWithoutMetaInput[]
+    connectOrCreate?: BlockImageCreateOrConnectWithoutMetaInput | BlockImageCreateOrConnectWithoutMetaInput[]
+    createMany?: BlockImageCreateManyMetaInputEnvelope
+    connect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+  }
+
+  export type ImageUncheckedCreateNestedManyWithoutMetaInput = {
+    create?: XOR<ImageCreateWithoutMetaInput, ImageUncheckedCreateWithoutMetaInput> | ImageCreateWithoutMetaInput[] | ImageUncheckedCreateWithoutMetaInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutMetaInput | ImageCreateOrConnectWithoutMetaInput[]
+    createMany?: ImageCreateManyMetaInputEnvelope
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
   }
 
   export type PromoImageUpdateManyWithoutMetaNestedInput = {
@@ -23167,6 +26113,34 @@ export namespace Prisma {
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
   }
 
+  export type BlockImageUpdateManyWithoutMetaNestedInput = {
+    create?: XOR<BlockImageCreateWithoutMetaInput, BlockImageUncheckedCreateWithoutMetaInput> | BlockImageCreateWithoutMetaInput[] | BlockImageUncheckedCreateWithoutMetaInput[]
+    connectOrCreate?: BlockImageCreateOrConnectWithoutMetaInput | BlockImageCreateOrConnectWithoutMetaInput[]
+    upsert?: BlockImageUpsertWithWhereUniqueWithoutMetaInput | BlockImageUpsertWithWhereUniqueWithoutMetaInput[]
+    createMany?: BlockImageCreateManyMetaInputEnvelope
+    set?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    disconnect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    delete?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    connect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    update?: BlockImageUpdateWithWhereUniqueWithoutMetaInput | BlockImageUpdateWithWhereUniqueWithoutMetaInput[]
+    updateMany?: BlockImageUpdateManyWithWhereWithoutMetaInput | BlockImageUpdateManyWithWhereWithoutMetaInput[]
+    deleteMany?: BlockImageScalarWhereInput | BlockImageScalarWhereInput[]
+  }
+
+  export type ImageUpdateManyWithoutMetaNestedInput = {
+    create?: XOR<ImageCreateWithoutMetaInput, ImageUncheckedCreateWithoutMetaInput> | ImageCreateWithoutMetaInput[] | ImageUncheckedCreateWithoutMetaInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutMetaInput | ImageCreateOrConnectWithoutMetaInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutMetaInput | ImageUpsertWithWhereUniqueWithoutMetaInput[]
+    createMany?: ImageCreateManyMetaInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutMetaInput | ImageUpdateWithWhereUniqueWithoutMetaInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutMetaInput | ImageUpdateManyWithWhereWithoutMetaInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
+  }
+
   export type PromoImageUncheckedUpdateManyWithoutMetaNestedInput = {
     create?: XOR<PromoImageCreateWithoutMetaInput, PromoImageUncheckedCreateWithoutMetaInput> | PromoImageCreateWithoutMetaInput[] | PromoImageUncheckedCreateWithoutMetaInput[]
     connectOrCreate?: PromoImageCreateOrConnectWithoutMetaInput | PromoImageCreateOrConnectWithoutMetaInput[]
@@ -23221,6 +26195,34 @@ export namespace Prisma {
     update?: ProductUpdateWithWhereUniqueWithoutImageMetaInput | ProductUpdateWithWhereUniqueWithoutImageMetaInput[]
     updateMany?: ProductUpdateManyWithWhereWithoutImageMetaInput | ProductUpdateManyWithWhereWithoutImageMetaInput[]
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
+  }
+
+  export type BlockImageUncheckedUpdateManyWithoutMetaNestedInput = {
+    create?: XOR<BlockImageCreateWithoutMetaInput, BlockImageUncheckedCreateWithoutMetaInput> | BlockImageCreateWithoutMetaInput[] | BlockImageUncheckedCreateWithoutMetaInput[]
+    connectOrCreate?: BlockImageCreateOrConnectWithoutMetaInput | BlockImageCreateOrConnectWithoutMetaInput[]
+    upsert?: BlockImageUpsertWithWhereUniqueWithoutMetaInput | BlockImageUpsertWithWhereUniqueWithoutMetaInput[]
+    createMany?: BlockImageCreateManyMetaInputEnvelope
+    set?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    disconnect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    delete?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    connect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    update?: BlockImageUpdateWithWhereUniqueWithoutMetaInput | BlockImageUpdateWithWhereUniqueWithoutMetaInput[]
+    updateMany?: BlockImageUpdateManyWithWhereWithoutMetaInput | BlockImageUpdateManyWithWhereWithoutMetaInput[]
+    deleteMany?: BlockImageScalarWhereInput | BlockImageScalarWhereInput[]
+  }
+
+  export type ImageUncheckedUpdateManyWithoutMetaNestedInput = {
+    create?: XOR<ImageCreateWithoutMetaInput, ImageUncheckedCreateWithoutMetaInput> | ImageCreateWithoutMetaInput[] | ImageUncheckedCreateWithoutMetaInput[]
+    connectOrCreate?: ImageCreateOrConnectWithoutMetaInput | ImageCreateOrConnectWithoutMetaInput[]
+    upsert?: ImageUpsertWithWhereUniqueWithoutMetaInput | ImageUpsertWithWhereUniqueWithoutMetaInput[]
+    createMany?: ImageCreateManyMetaInputEnvelope
+    set?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    disconnect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    delete?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    connect?: ImageWhereUniqueInput | ImageWhereUniqueInput[]
+    update?: ImageUpdateWithWhereUniqueWithoutMetaInput | ImageUpdateWithWhereUniqueWithoutMetaInput[]
+    updateMany?: ImageUpdateManyWithWhereWithoutMetaInput | ImageUpdateManyWithWhereWithoutMetaInput[]
+    deleteMany?: ImageScalarWhereInput | ImageScalarWhereInput[]
   }
 
   export type DrawingsImageCreateimagesInput = {
@@ -23504,12 +26506,104 @@ export namespace Prisma {
     connect?: PageWhereUniqueInput
   }
 
-  export type PageUpdateOneRequiredWithoutBlocksNestedInput = {
+  export type BlockImageCreateNestedManyWithoutBlockInput = {
+    create?: XOR<BlockImageCreateWithoutBlockInput, BlockImageUncheckedCreateWithoutBlockInput> | BlockImageCreateWithoutBlockInput[] | BlockImageUncheckedCreateWithoutBlockInput[]
+    connectOrCreate?: BlockImageCreateOrConnectWithoutBlockInput | BlockImageCreateOrConnectWithoutBlockInput[]
+    createMany?: BlockImageCreateManyBlockInputEnvelope
+    connect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+  }
+
+  export type BlockImageUncheckedCreateNestedManyWithoutBlockInput = {
+    create?: XOR<BlockImageCreateWithoutBlockInput, BlockImageUncheckedCreateWithoutBlockInput> | BlockImageCreateWithoutBlockInput[] | BlockImageUncheckedCreateWithoutBlockInput[]
+    connectOrCreate?: BlockImageCreateOrConnectWithoutBlockInput | BlockImageCreateOrConnectWithoutBlockInput[]
+    createMany?: BlockImageCreateManyBlockInputEnvelope
+    connect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+  }
+
+  export type PageUpdateOneWithoutBlocksNestedInput = {
     create?: XOR<PageCreateWithoutBlocksInput, PageUncheckedCreateWithoutBlocksInput>
     connectOrCreate?: PageCreateOrConnectWithoutBlocksInput
     upsert?: PageUpsertWithoutBlocksInput
+    disconnect?: PageWhereInput | boolean
+    delete?: PageWhereInput | boolean
     connect?: PageWhereUniqueInput
     update?: XOR<XOR<PageUpdateToOneWithWhereWithoutBlocksInput, PageUpdateWithoutBlocksInput>, PageUncheckedUpdateWithoutBlocksInput>
+  }
+
+  export type BlockImageUpdateManyWithoutBlockNestedInput = {
+    create?: XOR<BlockImageCreateWithoutBlockInput, BlockImageUncheckedCreateWithoutBlockInput> | BlockImageCreateWithoutBlockInput[] | BlockImageUncheckedCreateWithoutBlockInput[]
+    connectOrCreate?: BlockImageCreateOrConnectWithoutBlockInput | BlockImageCreateOrConnectWithoutBlockInput[]
+    upsert?: BlockImageUpsertWithWhereUniqueWithoutBlockInput | BlockImageUpsertWithWhereUniqueWithoutBlockInput[]
+    createMany?: BlockImageCreateManyBlockInputEnvelope
+    set?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    disconnect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    delete?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    connect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    update?: BlockImageUpdateWithWhereUniqueWithoutBlockInput | BlockImageUpdateWithWhereUniqueWithoutBlockInput[]
+    updateMany?: BlockImageUpdateManyWithWhereWithoutBlockInput | BlockImageUpdateManyWithWhereWithoutBlockInput[]
+    deleteMany?: BlockImageScalarWhereInput | BlockImageScalarWhereInput[]
+  }
+
+  export type BlockImageUncheckedUpdateManyWithoutBlockNestedInput = {
+    create?: XOR<BlockImageCreateWithoutBlockInput, BlockImageUncheckedCreateWithoutBlockInput> | BlockImageCreateWithoutBlockInput[] | BlockImageUncheckedCreateWithoutBlockInput[]
+    connectOrCreate?: BlockImageCreateOrConnectWithoutBlockInput | BlockImageCreateOrConnectWithoutBlockInput[]
+    upsert?: BlockImageUpsertWithWhereUniqueWithoutBlockInput | BlockImageUpsertWithWhereUniqueWithoutBlockInput[]
+    createMany?: BlockImageCreateManyBlockInputEnvelope
+    set?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    disconnect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    delete?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    connect?: BlockImageWhereUniqueInput | BlockImageWhereUniqueInput[]
+    update?: BlockImageUpdateWithWhereUniqueWithoutBlockInput | BlockImageUpdateWithWhereUniqueWithoutBlockInput[]
+    updateMany?: BlockImageUpdateManyWithWhereWithoutBlockInput | BlockImageUpdateManyWithWhereWithoutBlockInput[]
+    deleteMany?: BlockImageScalarWhereInput | BlockImageScalarWhereInput[]
+  }
+
+  export type BlockCreateNestedOneWithoutImagesInput = {
+    create?: XOR<BlockCreateWithoutImagesInput, BlockUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: BlockCreateOrConnectWithoutImagesInput
+    connect?: BlockWhereUniqueInput
+  }
+
+  export type ImageMetaCreateNestedOneWithoutBlockImageInput = {
+    create?: XOR<ImageMetaCreateWithoutBlockImageInput, ImageMetaUncheckedCreateWithoutBlockImageInput>
+    connectOrCreate?: ImageMetaCreateOrConnectWithoutBlockImageInput
+    connect?: ImageMetaWhereUniqueInput
+  }
+
+  export type BlockUpdateOneWithoutImagesNestedInput = {
+    create?: XOR<BlockCreateWithoutImagesInput, BlockUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: BlockCreateOrConnectWithoutImagesInput
+    upsert?: BlockUpsertWithoutImagesInput
+    disconnect?: BlockWhereInput | boolean
+    delete?: BlockWhereInput | boolean
+    connect?: BlockWhereUniqueInput
+    update?: XOR<XOR<BlockUpdateToOneWithWhereWithoutImagesInput, BlockUpdateWithoutImagesInput>, BlockUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type ImageMetaUpdateOneWithoutBlockImageNestedInput = {
+    create?: XOR<ImageMetaCreateWithoutBlockImageInput, ImageMetaUncheckedCreateWithoutBlockImageInput>
+    connectOrCreate?: ImageMetaCreateOrConnectWithoutBlockImageInput
+    upsert?: ImageMetaUpsertWithoutBlockImageInput
+    disconnect?: ImageMetaWhereInput | boolean
+    delete?: ImageMetaWhereInput | boolean
+    connect?: ImageMetaWhereUniqueInput
+    update?: XOR<XOR<ImageMetaUpdateToOneWithWhereWithoutBlockImageInput, ImageMetaUpdateWithoutBlockImageInput>, ImageMetaUncheckedUpdateWithoutBlockImageInput>
+  }
+
+  export type ImageMetaCreateNestedOneWithoutImageInput = {
+    create?: XOR<ImageMetaCreateWithoutImageInput, ImageMetaUncheckedCreateWithoutImageInput>
+    connectOrCreate?: ImageMetaCreateOrConnectWithoutImageInput
+    connect?: ImageMetaWhereUniqueInput
+  }
+
+  export type ImageMetaUpdateOneWithoutImageNestedInput = {
+    create?: XOR<ImageMetaCreateWithoutImageInput, ImageMetaUncheckedCreateWithoutImageInput>
+    connectOrCreate?: ImageMetaCreateOrConnectWithoutImageInput
+    upsert?: ImageMetaUpsertWithoutImageInput
+    disconnect?: ImageMetaWhereInput | boolean
+    delete?: ImageMetaWhereInput | boolean
+    connect?: ImageMetaWhereUniqueInput
+    update?: XOR<XOR<ImageMetaUpdateToOneWithWhereWithoutImageInput, ImageMetaUpdateWithoutImageInput>, ImageMetaUncheckedUpdateWithoutImageInput>
   }
 
   export type GalleryCreateimagesInput = {
@@ -24055,6 +27149,8 @@ export namespace Prisma {
     promoImages?: PromoImageCreateNestedManyWithoutMetaInput
     drawingsImages?: DrawingsImageCreateNestedManyWithoutMetaInput
     Product?: ProductCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageCreateNestedManyWithoutMetaInput
+    Image?: ImageCreateNestedManyWithoutMetaInput
   }
 
   export type ImageMetaUncheckedCreateWithoutCategoryInput = {
@@ -24067,6 +27163,8 @@ export namespace Prisma {
     promoImages?: PromoImageUncheckedCreateNestedManyWithoutMetaInput
     drawingsImages?: DrawingsImageUncheckedCreateNestedManyWithoutMetaInput
     Product?: ProductUncheckedCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageUncheckedCreateNestedManyWithoutMetaInput
+    Image?: ImageUncheckedCreateNestedManyWithoutMetaInput
   }
 
   export type ImageMetaCreateOrConnectWithoutCategoryInput = {
@@ -24166,6 +27264,8 @@ export namespace Prisma {
     promoImages?: PromoImageUpdateManyWithoutMetaNestedInput
     drawingsImages?: DrawingsImageUpdateManyWithoutMetaNestedInput
     Product?: ProductUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUpdateManyWithoutMetaNestedInput
+    Image?: ImageUpdateManyWithoutMetaNestedInput
   }
 
   export type ImageMetaUncheckedUpdateWithoutCategoryInput = {
@@ -24178,6 +27278,8 @@ export namespace Prisma {
     promoImages?: PromoImageUncheckedUpdateManyWithoutMetaNestedInput
     drawingsImages?: DrawingsImageUncheckedUpdateManyWithoutMetaNestedInput
     Product?: ProductUncheckedUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUncheckedUpdateManyWithoutMetaNestedInput
+    Image?: ImageUncheckedUpdateManyWithoutMetaNestedInput
   }
 
   export type CategoryCreateWithoutProductsInput = {
@@ -24324,6 +27426,8 @@ export namespace Prisma {
     promoImages?: PromoImageCreateNestedManyWithoutMetaInput
     drawingsImages?: DrawingsImageCreateNestedManyWithoutMetaInput
     Category?: CategoryCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageCreateNestedManyWithoutMetaInput
+    Image?: ImageCreateNestedManyWithoutMetaInput
   }
 
   export type ImageMetaUncheckedCreateWithoutProductInput = {
@@ -24336,6 +27440,8 @@ export namespace Prisma {
     promoImages?: PromoImageUncheckedCreateNestedManyWithoutMetaInput
     drawingsImages?: DrawingsImageUncheckedCreateNestedManyWithoutMetaInput
     Category?: CategoryUncheckedCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageUncheckedCreateNestedManyWithoutMetaInput
+    Image?: ImageUncheckedCreateNestedManyWithoutMetaInput
   }
 
   export type ImageMetaCreateOrConnectWithoutProductInput = {
@@ -24515,6 +27621,8 @@ export namespace Prisma {
     promoImages?: PromoImageUpdateManyWithoutMetaNestedInput
     drawingsImages?: DrawingsImageUpdateManyWithoutMetaNestedInput
     Category?: CategoryUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUpdateManyWithoutMetaNestedInput
+    Image?: ImageUpdateManyWithoutMetaNestedInput
   }
 
   export type ImageMetaUncheckedUpdateWithoutProductInput = {
@@ -24527,6 +27635,8 @@ export namespace Prisma {
     promoImages?: PromoImageUncheckedUpdateManyWithoutMetaNestedInput
     drawingsImages?: DrawingsImageUncheckedUpdateManyWithoutMetaNestedInput
     Category?: CategoryUncheckedUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUncheckedUpdateManyWithoutMetaNestedInput
+    Image?: ImageUncheckedUpdateManyWithoutMetaNestedInput
   }
 
   export type ProductCreateWithoutPromoImagesInput = {
@@ -24590,6 +27700,8 @@ export namespace Prisma {
     drawingsImages?: DrawingsImageCreateNestedManyWithoutMetaInput
     Category?: CategoryCreateNestedManyWithoutImageMetaInput
     Product?: ProductCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageCreateNestedManyWithoutMetaInput
+    Image?: ImageCreateNestedManyWithoutMetaInput
   }
 
   export type ImageMetaUncheckedCreateWithoutPromoImagesInput = {
@@ -24602,6 +27714,8 @@ export namespace Prisma {
     drawingsImages?: DrawingsImageUncheckedCreateNestedManyWithoutMetaInput
     Category?: CategoryUncheckedCreateNestedManyWithoutImageMetaInput
     Product?: ProductUncheckedCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageUncheckedCreateNestedManyWithoutMetaInput
+    Image?: ImageUncheckedCreateNestedManyWithoutMetaInput
   }
 
   export type ImageMetaCreateOrConnectWithoutPromoImagesInput = {
@@ -24687,6 +27801,8 @@ export namespace Prisma {
     drawingsImages?: DrawingsImageUpdateManyWithoutMetaNestedInput
     Category?: CategoryUpdateManyWithoutImageMetaNestedInput
     Product?: ProductUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUpdateManyWithoutMetaNestedInput
+    Image?: ImageUpdateManyWithoutMetaNestedInput
   }
 
   export type ImageMetaUncheckedUpdateWithoutPromoImagesInput = {
@@ -24699,6 +27815,8 @@ export namespace Prisma {
     drawingsImages?: DrawingsImageUncheckedUpdateManyWithoutMetaNestedInput
     Category?: CategoryUncheckedUpdateManyWithoutImageMetaNestedInput
     Product?: ProductUncheckedUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUncheckedUpdateManyWithoutMetaNestedInput
+    Image?: ImageUncheckedUpdateManyWithoutMetaNestedInput
   }
 
   export type PromoImageCreateWithoutMetaInput = {
@@ -24845,6 +27963,56 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type BlockImageCreateWithoutMetaInput = {
+    id?: string
+    image: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    block?: BlockCreateNestedOneWithoutImagesInput
+  }
+
+  export type BlockImageUncheckedCreateWithoutMetaInput = {
+    id?: string
+    image: string
+    blockId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BlockImageCreateOrConnectWithoutMetaInput = {
+    where: BlockImageWhereUniqueInput
+    create: XOR<BlockImageCreateWithoutMetaInput, BlockImageUncheckedCreateWithoutMetaInput>
+  }
+
+  export type BlockImageCreateManyMetaInputEnvelope = {
+    data: BlockImageCreateManyMetaInput | BlockImageCreateManyMetaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ImageCreateWithoutMetaInput = {
+    id?: string
+    image: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ImageUncheckedCreateWithoutMetaInput = {
+    id?: string
+    image: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ImageCreateOrConnectWithoutMetaInput = {
+    where: ImageWhereUniqueInput
+    create: XOR<ImageCreateWithoutMetaInput, ImageUncheckedCreateWithoutMetaInput>
+  }
+
+  export type ImageCreateManyMetaInputEnvelope = {
+    data: ImageCreateManyMetaInput | ImageCreateManyMetaInput[]
+    skipDuplicates?: boolean
+  }
+
   export type PromoImageUpsertWithWhereUniqueWithoutMetaInput = {
     where: PromoImageWhereUniqueInput
     update: XOR<PromoImageUpdateWithoutMetaInput, PromoImageUncheckedUpdateWithoutMetaInput>
@@ -24924,6 +28092,61 @@ export namespace Prisma {
     data: XOR<ProductUpdateManyMutationInput, ProductUncheckedUpdateManyWithoutImageMetaInput>
   }
 
+  export type BlockImageUpsertWithWhereUniqueWithoutMetaInput = {
+    where: BlockImageWhereUniqueInput
+    update: XOR<BlockImageUpdateWithoutMetaInput, BlockImageUncheckedUpdateWithoutMetaInput>
+    create: XOR<BlockImageCreateWithoutMetaInput, BlockImageUncheckedCreateWithoutMetaInput>
+  }
+
+  export type BlockImageUpdateWithWhereUniqueWithoutMetaInput = {
+    where: BlockImageWhereUniqueInput
+    data: XOR<BlockImageUpdateWithoutMetaInput, BlockImageUncheckedUpdateWithoutMetaInput>
+  }
+
+  export type BlockImageUpdateManyWithWhereWithoutMetaInput = {
+    where: BlockImageScalarWhereInput
+    data: XOR<BlockImageUpdateManyMutationInput, BlockImageUncheckedUpdateManyWithoutMetaInput>
+  }
+
+  export type BlockImageScalarWhereInput = {
+    AND?: BlockImageScalarWhereInput | BlockImageScalarWhereInput[]
+    OR?: BlockImageScalarWhereInput[]
+    NOT?: BlockImageScalarWhereInput | BlockImageScalarWhereInput[]
+    id?: StringFilter<"BlockImage"> | string
+    image?: StringFilter<"BlockImage"> | string
+    metaId?: StringNullableFilter<"BlockImage"> | string | null
+    blockId?: StringNullableFilter<"BlockImage"> | string | null
+    createdAt?: DateTimeFilter<"BlockImage"> | Date | string
+    updatedAt?: DateTimeFilter<"BlockImage"> | Date | string
+  }
+
+  export type ImageUpsertWithWhereUniqueWithoutMetaInput = {
+    where: ImageWhereUniqueInput
+    update: XOR<ImageUpdateWithoutMetaInput, ImageUncheckedUpdateWithoutMetaInput>
+    create: XOR<ImageCreateWithoutMetaInput, ImageUncheckedCreateWithoutMetaInput>
+  }
+
+  export type ImageUpdateWithWhereUniqueWithoutMetaInput = {
+    where: ImageWhereUniqueInput
+    data: XOR<ImageUpdateWithoutMetaInput, ImageUncheckedUpdateWithoutMetaInput>
+  }
+
+  export type ImageUpdateManyWithWhereWithoutMetaInput = {
+    where: ImageScalarWhereInput
+    data: XOR<ImageUpdateManyMutationInput, ImageUncheckedUpdateManyWithoutMetaInput>
+  }
+
+  export type ImageScalarWhereInput = {
+    AND?: ImageScalarWhereInput | ImageScalarWhereInput[]
+    OR?: ImageScalarWhereInput[]
+    NOT?: ImageScalarWhereInput | ImageScalarWhereInput[]
+    id?: StringFilter<"Image"> | string
+    image?: StringFilter<"Image"> | string
+    metaId?: StringNullableFilter<"Image"> | string | null
+    createdAt?: DateTimeFilter<"Image"> | Date | string
+    updatedAt?: DateTimeFilter<"Image"> | Date | string
+  }
+
   export type ProductCreateWithoutDrawingsImagesInput = {
     id?: string
     name: string
@@ -24985,6 +28208,8 @@ export namespace Prisma {
     promoImages?: PromoImageCreateNestedManyWithoutMetaInput
     Category?: CategoryCreateNestedManyWithoutImageMetaInput
     Product?: ProductCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageCreateNestedManyWithoutMetaInput
+    Image?: ImageCreateNestedManyWithoutMetaInput
   }
 
   export type ImageMetaUncheckedCreateWithoutDrawingsImagesInput = {
@@ -24997,6 +28222,8 @@ export namespace Prisma {
     promoImages?: PromoImageUncheckedCreateNestedManyWithoutMetaInput
     Category?: CategoryUncheckedCreateNestedManyWithoutImageMetaInput
     Product?: ProductUncheckedCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageUncheckedCreateNestedManyWithoutMetaInput
+    Image?: ImageUncheckedCreateNestedManyWithoutMetaInput
   }
 
   export type ImageMetaCreateOrConnectWithoutDrawingsImagesInput = {
@@ -25082,6 +28309,8 @@ export namespace Prisma {
     promoImages?: PromoImageUpdateManyWithoutMetaNestedInput
     Category?: CategoryUpdateManyWithoutImageMetaNestedInput
     Product?: ProductUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUpdateManyWithoutMetaNestedInput
+    Image?: ImageUpdateManyWithoutMetaNestedInput
   }
 
   export type ImageMetaUncheckedUpdateWithoutDrawingsImagesInput = {
@@ -25094,6 +28323,8 @@ export namespace Prisma {
     promoImages?: PromoImageUncheckedUpdateManyWithoutMetaNestedInput
     Category?: CategoryUncheckedUpdateManyWithoutImageMetaNestedInput
     Product?: ProductUncheckedUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUncheckedUpdateManyWithoutMetaNestedInput
+    Image?: ImageUncheckedUpdateManyWithoutMetaNestedInput
   }
 
   export type ProductCreateWithoutFilesInput = {
@@ -25232,21 +28463,23 @@ export namespace Prisma {
   export type BlockCreateWithoutPageInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     content?: string | null
-    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    images?: BlockImageCreateNestedManyWithoutBlockInput
   }
 
   export type BlockUncheckedCreateWithoutPageInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     content?: string | null
-    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    images?: BlockImageUncheckedCreateNestedManyWithoutBlockInput
   }
 
   export type BlockCreateOrConnectWithoutPageInput = {
@@ -25262,6 +28495,7 @@ export namespace Prisma {
   export type GalleryCreateWithoutPageInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     images?: GalleryCreateimagesInput | string[]
     createdAt?: Date | string
@@ -25271,6 +28505,7 @@ export namespace Prisma {
   export type GalleryUncheckedCreateWithoutPageInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     images?: GalleryCreateimagesInput | string[]
     createdAt?: Date | string
@@ -25340,12 +28575,12 @@ export namespace Prisma {
     NOT?: BlockScalarWhereInput | BlockScalarWhereInput[]
     id?: StringFilter<"Block"> | string
     name?: StringFilter<"Block"> | string
+    locale?: StringNullableFilter<"Block"> | string | null
     title?: StringNullableFilter<"Block"> | string | null
     content?: StringNullableFilter<"Block"> | string | null
-    image?: StringNullableFilter<"Block"> | string | null
     createdAt?: DateTimeFilter<"Block"> | Date | string
     updatedAt?: DateTimeFilter<"Block"> | Date | string
-    pageId?: StringFilter<"Block"> | string
+    pageId?: StringNullableFilter<"Block"> | string | null
   }
 
   export type GalleryUpsertWithWhereUniqueWithoutPageInput = {
@@ -25370,6 +28605,7 @@ export namespace Prisma {
     NOT?: GalleryScalarWhereInput | GalleryScalarWhereInput[]
     id?: StringFilter<"Gallery"> | string
     name?: StringFilter<"Gallery"> | string
+    locale?: StringNullableFilter<"Gallery"> | string | null
     title?: StringNullableFilter<"Gallery"> | string | null
     images?: StringNullableListFilter<"Gallery">
     createdAt?: DateTimeFilter<"Gallery"> | Date | string
@@ -25592,6 +28828,32 @@ export namespace Prisma {
     create: XOR<PageCreateWithoutBlocksInput, PageUncheckedCreateWithoutBlocksInput>
   }
 
+  export type BlockImageCreateWithoutBlockInput = {
+    id?: string
+    image: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    meta?: ImageMetaCreateNestedOneWithoutBlockImageInput
+  }
+
+  export type BlockImageUncheckedCreateWithoutBlockInput = {
+    id?: string
+    image: string
+    metaId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BlockImageCreateOrConnectWithoutBlockInput = {
+    where: BlockImageWhereUniqueInput
+    create: XOR<BlockImageCreateWithoutBlockInput, BlockImageUncheckedCreateWithoutBlockInput>
+  }
+
+  export type BlockImageCreateManyBlockInputEnvelope = {
+    data: BlockImageCreateManyBlockInput | BlockImageCreateManyBlockInput[]
+    skipDuplicates?: boolean
+  }
+
   export type PageUpsertWithoutBlocksInput = {
     update: XOR<PageUpdateWithoutBlocksInput, PageUncheckedUpdateWithoutBlocksInput>
     create: XOR<PageCreateWithoutBlocksInput, PageUncheckedCreateWithoutBlocksInput>
@@ -25625,6 +28887,226 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     galleries?: GalleryUncheckedUpdateManyWithoutPageNestedInput
+  }
+
+  export type BlockImageUpsertWithWhereUniqueWithoutBlockInput = {
+    where: BlockImageWhereUniqueInput
+    update: XOR<BlockImageUpdateWithoutBlockInput, BlockImageUncheckedUpdateWithoutBlockInput>
+    create: XOR<BlockImageCreateWithoutBlockInput, BlockImageUncheckedCreateWithoutBlockInput>
+  }
+
+  export type BlockImageUpdateWithWhereUniqueWithoutBlockInput = {
+    where: BlockImageWhereUniqueInput
+    data: XOR<BlockImageUpdateWithoutBlockInput, BlockImageUncheckedUpdateWithoutBlockInput>
+  }
+
+  export type BlockImageUpdateManyWithWhereWithoutBlockInput = {
+    where: BlockImageScalarWhereInput
+    data: XOR<BlockImageUpdateManyMutationInput, BlockImageUncheckedUpdateManyWithoutBlockInput>
+  }
+
+  export type BlockCreateWithoutImagesInput = {
+    id?: string
+    name: string
+    locale?: string | null
+    title?: string | null
+    content?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    page?: PageCreateNestedOneWithoutBlocksInput
+  }
+
+  export type BlockUncheckedCreateWithoutImagesInput = {
+    id?: string
+    name: string
+    locale?: string | null
+    title?: string | null
+    content?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pageId?: string | null
+  }
+
+  export type BlockCreateOrConnectWithoutImagesInput = {
+    where: BlockWhereUniqueInput
+    create: XOR<BlockCreateWithoutImagesInput, BlockUncheckedCreateWithoutImagesInput>
+  }
+
+  export type ImageMetaCreateWithoutBlockImageInput = {
+    id?: string
+    title: string
+    alt?: string | null
+    locale?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    promoImages?: PromoImageCreateNestedManyWithoutMetaInput
+    drawingsImages?: DrawingsImageCreateNestedManyWithoutMetaInput
+    Category?: CategoryCreateNestedManyWithoutImageMetaInput
+    Product?: ProductCreateNestedManyWithoutImageMetaInput
+    Image?: ImageCreateNestedManyWithoutMetaInput
+  }
+
+  export type ImageMetaUncheckedCreateWithoutBlockImageInput = {
+    id?: string
+    title: string
+    alt?: string | null
+    locale?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    promoImages?: PromoImageUncheckedCreateNestedManyWithoutMetaInput
+    drawingsImages?: DrawingsImageUncheckedCreateNestedManyWithoutMetaInput
+    Category?: CategoryUncheckedCreateNestedManyWithoutImageMetaInput
+    Product?: ProductUncheckedCreateNestedManyWithoutImageMetaInput
+    Image?: ImageUncheckedCreateNestedManyWithoutMetaInput
+  }
+
+  export type ImageMetaCreateOrConnectWithoutBlockImageInput = {
+    where: ImageMetaWhereUniqueInput
+    create: XOR<ImageMetaCreateWithoutBlockImageInput, ImageMetaUncheckedCreateWithoutBlockImageInput>
+  }
+
+  export type BlockUpsertWithoutImagesInput = {
+    update: XOR<BlockUpdateWithoutImagesInput, BlockUncheckedUpdateWithoutImagesInput>
+    create: XOR<BlockCreateWithoutImagesInput, BlockUncheckedCreateWithoutImagesInput>
+    where?: BlockWhereInput
+  }
+
+  export type BlockUpdateToOneWithWhereWithoutImagesInput = {
+    where?: BlockWhereInput
+    data: XOR<BlockUpdateWithoutImagesInput, BlockUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type BlockUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    page?: PageUpdateOneWithoutBlocksNestedInput
+  }
+
+  export type BlockUncheckedUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pageId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ImageMetaUpsertWithoutBlockImageInput = {
+    update: XOR<ImageMetaUpdateWithoutBlockImageInput, ImageMetaUncheckedUpdateWithoutBlockImageInput>
+    create: XOR<ImageMetaCreateWithoutBlockImageInput, ImageMetaUncheckedCreateWithoutBlockImageInput>
+    where?: ImageMetaWhereInput
+  }
+
+  export type ImageMetaUpdateToOneWithWhereWithoutBlockImageInput = {
+    where?: ImageMetaWhereInput
+    data: XOR<ImageMetaUpdateWithoutBlockImageInput, ImageMetaUncheckedUpdateWithoutBlockImageInput>
+  }
+
+  export type ImageMetaUpdateWithoutBlockImageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    promoImages?: PromoImageUpdateManyWithoutMetaNestedInput
+    drawingsImages?: DrawingsImageUpdateManyWithoutMetaNestedInput
+    Category?: CategoryUpdateManyWithoutImageMetaNestedInput
+    Product?: ProductUpdateManyWithoutImageMetaNestedInput
+    Image?: ImageUpdateManyWithoutMetaNestedInput
+  }
+
+  export type ImageMetaUncheckedUpdateWithoutBlockImageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    promoImages?: PromoImageUncheckedUpdateManyWithoutMetaNestedInput
+    drawingsImages?: DrawingsImageUncheckedUpdateManyWithoutMetaNestedInput
+    Category?: CategoryUncheckedUpdateManyWithoutImageMetaNestedInput
+    Product?: ProductUncheckedUpdateManyWithoutImageMetaNestedInput
+    Image?: ImageUncheckedUpdateManyWithoutMetaNestedInput
+  }
+
+  export type ImageMetaCreateWithoutImageInput = {
+    id?: string
+    title: string
+    alt?: string | null
+    locale?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    promoImages?: PromoImageCreateNestedManyWithoutMetaInput
+    drawingsImages?: DrawingsImageCreateNestedManyWithoutMetaInput
+    Category?: CategoryCreateNestedManyWithoutImageMetaInput
+    Product?: ProductCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageCreateNestedManyWithoutMetaInput
+  }
+
+  export type ImageMetaUncheckedCreateWithoutImageInput = {
+    id?: string
+    title: string
+    alt?: string | null
+    locale?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    promoImages?: PromoImageUncheckedCreateNestedManyWithoutMetaInput
+    drawingsImages?: DrawingsImageUncheckedCreateNestedManyWithoutMetaInput
+    Category?: CategoryUncheckedCreateNestedManyWithoutImageMetaInput
+    Product?: ProductUncheckedCreateNestedManyWithoutImageMetaInput
+    BlockImage?: BlockImageUncheckedCreateNestedManyWithoutMetaInput
+  }
+
+  export type ImageMetaCreateOrConnectWithoutImageInput = {
+    where: ImageMetaWhereUniqueInput
+    create: XOR<ImageMetaCreateWithoutImageInput, ImageMetaUncheckedCreateWithoutImageInput>
+  }
+
+  export type ImageMetaUpsertWithoutImageInput = {
+    update: XOR<ImageMetaUpdateWithoutImageInput, ImageMetaUncheckedUpdateWithoutImageInput>
+    create: XOR<ImageMetaCreateWithoutImageInput, ImageMetaUncheckedCreateWithoutImageInput>
+    where?: ImageMetaWhereInput
+  }
+
+  export type ImageMetaUpdateToOneWithWhereWithoutImageInput = {
+    where?: ImageMetaWhereInput
+    data: XOR<ImageMetaUpdateWithoutImageInput, ImageMetaUncheckedUpdateWithoutImageInput>
+  }
+
+  export type ImageMetaUpdateWithoutImageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    promoImages?: PromoImageUpdateManyWithoutMetaNestedInput
+    drawingsImages?: DrawingsImageUpdateManyWithoutMetaNestedInput
+    Category?: CategoryUpdateManyWithoutImageMetaNestedInput
+    Product?: ProductUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUpdateManyWithoutMetaNestedInput
+  }
+
+  export type ImageMetaUncheckedUpdateWithoutImageInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    alt?: NullableStringFieldUpdateOperationsInput | string | null
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    promoImages?: PromoImageUncheckedUpdateManyWithoutMetaNestedInput
+    drawingsImages?: DrawingsImageUncheckedUpdateManyWithoutMetaNestedInput
+    Category?: CategoryUncheckedUpdateManyWithoutImageMetaNestedInput
+    Product?: ProductUncheckedUpdateManyWithoutImageMetaNestedInput
+    BlockImage?: BlockImageUncheckedUpdateManyWithoutMetaNestedInput
   }
 
   export type PageCreateWithoutGalleriesInput = {
@@ -26025,6 +29507,21 @@ export namespace Prisma {
     status?: string
   }
 
+  export type BlockImageCreateManyMetaInput = {
+    id?: string
+    image: string
+    blockId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ImageCreateManyMetaInput = {
+    id?: string
+    image: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type PromoImageUpdateWithoutMetaInput = {
     id?: StringFieldUpdateOperationsInput | string
     images?: PromoImageUpdateimagesInput | string[]
@@ -26177,12 +29674,57 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
   }
 
+  export type BlockImageUpdateWithoutMetaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    block?: BlockUpdateOneWithoutImagesNestedInput
+  }
+
+  export type BlockImageUncheckedUpdateWithoutMetaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    blockId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlockImageUncheckedUpdateManyWithoutMetaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    blockId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImageUpdateWithoutMetaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImageUncheckedUpdateWithoutMetaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ImageUncheckedUpdateManyWithoutMetaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type BlockCreateManyPageInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     content?: string | null
-    image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -26190,6 +29732,7 @@ export namespace Prisma {
   export type GalleryCreateManyPageInput = {
     id?: string
     name: string
+    locale?: string | null
     title?: string | null
     images?: GalleryCreateimagesInput | string[]
     createdAt?: Date | string
@@ -26199,29 +29742,31 @@ export namespace Prisma {
   export type BlockUpdateWithoutPageInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: BlockImageUpdateManyWithoutBlockNestedInput
   }
 
   export type BlockUncheckedUpdateWithoutPageInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: BlockImageUncheckedUpdateManyWithoutBlockNestedInput
   }
 
   export type BlockUncheckedUpdateManyWithoutPageInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -26229,6 +29774,7 @@ export namespace Prisma {
   export type GalleryUpdateWithoutPageInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     images?: GalleryUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26238,6 +29784,7 @@ export namespace Prisma {
   export type GalleryUncheckedUpdateWithoutPageInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     images?: GalleryUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26247,6 +29794,7 @@ export namespace Prisma {
   export type GalleryUncheckedUpdateManyWithoutPageInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     images?: GalleryUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26427,6 +29975,38 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     imageMetaId?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BlockImageCreateManyBlockInput = {
+    id?: string
+    image: string
+    metaId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BlockImageUpdateWithoutBlockInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    meta?: ImageMetaUpdateOneWithoutBlockImageNestedInput
+  }
+
+  export type BlockImageUncheckedUpdateWithoutBlockInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    metaId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BlockImageUncheckedUpdateManyWithoutBlockInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    metaId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
