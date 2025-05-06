@@ -5,6 +5,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { addPage } from "@/services/pages/addPage";
 import { getPages } from "@/services/pages/getPages";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { RiFileTextFill } from "react-icons/ri";
 
 export default function PagesPage() {
   // const [name, setName] = React.useState("");
@@ -16,6 +18,8 @@ export default function PagesPage() {
   //   setName("");
   //   setSlug("");
   // };
+
+  const router = useRouter();
 
   const { data: pages } = useQuery({
     queryKey: ["pages"],
@@ -37,10 +41,23 @@ export default function PagesPage() {
   //   },
   // });
 
+  let collectedPages: any = [];
+  pages?.forEach((page) => {
+    const found = collectedPages.find((p: any) => p.slug === page.slug);
+    if (!found) {
+      collectedPages.push({
+        slug: page.slug,
+        name: page.name,
+        locales: [page.locale],
+      });
+    } else if (!found.locales.includes(page.locale)) {
+      found.locales.push(page.locale);
+    }
+  });
+
   return (
     <div>
-      <h1>Pages</h1>
-      <Link href="/pages/new">New Page</Link>
+      <Button onClick={() => router.push("/pages/new")}>New Page</Button>
       {/* <div className="flex flex-col gap-2 max-w-md mx-auto">
         <Input
           type="text"
@@ -64,11 +81,18 @@ export default function PagesPage() {
       </div> */}
 
       <div className="mt-8">
-        <h2>Pages</h2>
+        <h2 className="text-2xl font-bold">Pages</h2>
         <ul>
-          {pages?.map((page) => (
-            <Link href={`/pages/${page.slug}`} key={page.id}>
-              <li>{page.name}</li>
+          {collectedPages?.map((page: any) => (
+            <Link
+              href={`/pages/${page.slug}`}
+              key={page.name}
+              className="hover:opacity-80 transition-opacity"
+            >
+              <li className="flex items-center gap-2">
+                <RiFileTextFill />
+                {page.name}
+              </li>
             </Link>
           ))}
         </ul>
