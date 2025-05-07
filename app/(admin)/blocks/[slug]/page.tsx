@@ -3,80 +3,116 @@ import React from "react";
 import { useParams } from "next/navigation";
 import { Button, Checkbox, Input } from "@/components/jump-ui";
 import { useQuery } from "@tanstack/react-query";
-import { getPage } from "@/services/pages/getPage";
 import { Tabs, Tab } from "@/components/shared/Tabs";
 import Link from "next/link";
 import { Textarea } from "@/components/jump-ui/components/Textarea";
-import { addPage } from "@/services/pages/addPage";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { getLocales } from "@/services/getLocales";
+import Gallery from "@/components/Gallery";
+import Image from "next/image";
+import { RiDeleteBin2Line } from "react-icons/ri";
+import { useRouter } from "next/navigation";
+import { getBlock } from "@/services/blocks/getBlock";
+import { editBlock } from "@/services/blocks/editBlock";
 
-export default function PagePage() {
+export default function EditBlockPage({ slug }: { slug: string }) {
   const { slug: slugParam } = useParams();
 
   const [form, setForm] = React.useState({} as any);
-  const [blocks, setBlocks] = React.useState([]);
+  // const [blocks, setBlocks] = React.useState([]);
+  const [image, setImage] = React.useState<File | null>(null);
+  const [isImage, setIsImage] = React.useState(false);
+  const [selectedImage, setSelectedImage] = React.useState<{
+    id: string;
+    path: string;
+  } | null>(null);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(form);
-    await mutateAsync({ data: form });
+    await mutateAsync({ data: form, image: selectedImage?.id });
+    router.push("/blocks");
+  };
+
+  const removeImage = () => {
+    setSelectedImage(null);
+    setImage(null);
   };
 
   const queryClient = useQueryClient();
 
-  const { data: page, isLoading } = useQuery({
-    queryKey: ["page", slugParam],
-    queryFn: () => getPage(slugParam as string),
+  const { data: block, isLoading: blockLoading } = useQuery({
+    queryKey: ["block", slugParam],
+    queryFn: () => getBlock(slugParam as string),
   });
 
-  const locales = page?.map((page) => page.locale);
+  const { data: locales, isLoading: localesLoading } = useQuery({
+    queryKey: ["locales"],
+    queryFn: getLocales,
+  });
+
+  const slugBuilder = (name: string) => {
+    const slug = name.toLowerCase().replace(/[^a-z0-9]/g, "-");
+    return slug;
+  };
+
+  // const locales = page?.map((page) => page.locale);
 
   React.useEffect(() => {
-    if (page) {
-      const globalPage = {
-        name: page[0].name,
-        slug: page[0].slug,
+    if (block) {
+      const globalBlock = {
+        name: block?.[0].name,
+        slug: block?.[0].slug,
       };
-      const localePage = page.reverse().reduce(
-        (acc, page) => ({
+      const localeBlock = block!.reverse().reduce(
+        (acc, block) => ({
           ...acc,
-          [page.locale!]: {
-            locale: page.locale,
-            meta: page.meta,
+          [block.locale!]: {
+            locale: block.locale,
+            title: block.title,
+            content: block.content,
+            id: block.id,
           },
         }),
         {}
       );
-      setForm({ ...globalPage, locales: { ...localePage } });
+      setForm({ ...globalBlock, locales: { ...localeBlock } });
+      setSelectedImage(
+        block?.[0].image
+          ? { id: block?.[0].image.id, path: block?.[0].image.image }
+          : null
+      );
+      setIsImage(block?.[0].image ? true : false);
     }
-  }, [page, slugParam]);
+  }, [block]);
 
   console.log("form", form);
 
   const { mutateAsync } = useMutation({
-    mutationFn: async ({ data }: { data: any }) => {
-      const res = await addPage({ data });
+    mutationFn: async ({ data, image }: { data: any; image?: string }) => {
+      const res = await editBlock({ data, image });
       return res;
     },
     onError: (error) => {
       console.log(error);
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["pages"] });
+      queryClient.invalidateQueries({ queryKey: ["blocks"] });
     },
   });
 
-  if (isLoading || !form.name) {
+  if (blockLoading || localesLoading) {
     return <div>Loading...</div>;
   }
-
+  console.log("selectedImage", selectedImage);
+  console.log("block", block);
   //   return;
   return (
     <div>
       <div>
-        <Link href="/pages">Back</Link>
+        <Link href="/blocks">Back</Link>
       </div>
-      {slugParam}
 
       <div className="flex flex-col gap-8 max-w-md mx-auto">
         <Input
@@ -88,6 +124,7 @@ export default function PagePage() {
             setForm((prev: any) => ({
               ...prev,
               name: e.target.value,
+              slug: slugBuilder(e.target.value),
             }));
           }}
         />
@@ -95,33 +132,26 @@ export default function PagePage() {
           type="text"
           name="slug"
           label="Slug"
+          readOnly
+          className="text-zinc-500"
           value={form?.slug || ""}
-          onChange={(e) => {
-            setForm((prev: any) => ({
-              ...prev,
-              slug: e.target.value,
-            }));
-          }}
         />
         <Tabs>
           {locales?.map((locale) => (
-            <Tab key={locale} label={locale!}>
+            <Tab key={locale.slug} label={locale.slug}>
               <Input
                 type="text"
                 name="title"
-                label="Meta Title"
-                value={form?.locales?.[locale!]?.meta?.title || ""}
+                label="Title"
+                value={form?.locales?.[locale.slug]!.title || ""}
                 onChange={(e) => {
                   setForm((prev: any) => ({
                     ...prev,
                     locales: {
                       ...prev.locales,
-                      [locale!]: {
-                        ...prev.locales[locale!],
-                        meta: {
-                          ...prev.locales[locale!].meta,
-                          title: e.target.value,
-                        },
+                      [locale.slug!]: {
+                        ...prev.locales[locale.slug!],
+                        title: e.target.value,
                       },
                     },
                   }));
@@ -132,22 +162,20 @@ export default function PagePage() {
         </Tabs>
         <Tabs>
           {locales?.map((locale) => (
-            <Tab key={locale} label={locale!}>
+            <Tab key={locale.slug} label={locale.slug}>
               <Textarea
-                name="description"
-                label="Meta Description"
-                value={form?.locales?.[locale!]?.meta?.description || ""}
+                name="content"
+                label="Content"
+                rows={10}
+                value={form?.locales?.[locale.slug]!.content || ""}
                 onChange={(e) => {
                   setForm((prev: any) => ({
                     ...prev,
                     locales: {
                       ...prev.locales,
-                      [locale!]: {
-                        ...prev.locales[locale!],
-                        meta: {
-                          ...prev.locales[locale!].meta,
-                          description: e.target.value,
-                        },
+                      [locale.slug!]: {
+                        ...prev.locales[locale.slug!],
+                        content: e.target.value,
                       },
                     },
                   }));
@@ -156,142 +184,32 @@ export default function PagePage() {
             </Tab>
           ))}
         </Tabs>
-        {/* <Button>Add Block</Button>
-
-        <Tabs>
-          {page?.map((page) => (
-            <Tab key={page.id} label={page.locale!}>
-              <Block page={page} form={form} setForm={setForm} />
-            </Tab>
-          ))}
-        </Tabs> */}
+        <div className="flex items-center gap-2">
+          <Checkbox
+            label="Image"
+            checked={isImage}
+            onChange={() => setIsImage((prev) => !prev)}
+          />
+          <div>Image</div>
+          {selectedImage?.id && (
+            <div className="flex items-center gap-2">
+              <Image src={selectedImage.path} width={100} height={100} alt="" />
+              <Button onClick={removeImage}>
+                <RiDeleteBin2Line />
+              </Button>
+            </div>
+          )}
+        </div>
+        {isImage && (
+          <>
+            <Gallery
+              selectedImage={selectedImage}
+              setSelectedImage={setSelectedImage}
+            />
+          </>
+        )}
         <Button onClick={handleSubmit}>Save</Button>
       </div>
     </div>
   );
 }
-
-// export function Block({
-//   page,
-//   form,
-//   setForm,
-// }: {
-//   page: any;
-//   form: any;
-//   setForm: any;
-// }) {
-//   const [image, setImage] = React.useState<File | null>(null);
-//   const [isImage, setIsImage] = React.useState(false);
-//   return (
-//     <div className="flex flex-col gap-2">
-//       <Input
-//         type="text"
-//         name="name"
-//         label="Name"
-//         value={form?.blocks?.name || ""}
-//         onChange={(e) => {
-//           setForm((prev: any) => ({
-//             ...prev,
-//             blocks: {
-//               ...prev.blocks,
-//               name: e.target.value,
-//             },
-//           }));
-//         }}
-//       />
-//       <Input
-//         type="text"
-//         name="title"
-//         label="Title"
-//         value={form?.[page.locale!]?.blocks?.title || ""}
-//         onChange={(e) => {
-//           setForm((prev: any) => ({
-//             ...prev,
-//             [page.locale!]: {
-//               ...prev[page.locale!],
-//               blocks: {
-//                 ...prev[page.locale!].blocks,
-//                 title: e.target.value,
-//               },
-//             },
-//           }));
-//         }}
-//       />
-//       <Input
-//         type="text"
-//         name="content"
-//         label="Content"
-//         value={form?.[page.locale!]?.blocks?.content || ""}
-//         onChange={(e) => {
-//           setForm((prev: any) => ({
-//             ...prev,
-//             [page.locale!]: {
-//               ...prev[page.locale!],
-//               blocks: {
-//                 ...prev[page.locale!].blocks,
-//                 content: e.target.value,
-//               },
-//             },
-//           }));
-//         }}
-//       />
-//       <Checkbox
-//         label="Image"
-//         checked={isImage}
-//         onChange={() => setIsImage((prev) => !prev)}
-//       />
-//       {isImage && (
-//         <>
-//           <Input
-//             type="file"
-//             name="image"
-//             label="Image"
-//             onChange={(e) =>
-//               setForm((prev: any) => ({
-//                 ...prev,
-//                 blocks: {
-//                   ...prev.blocks,
-//                   image: e.target.files?.[0],
-//                 },
-//               }))
-//             }
-//           />
-//           <Input
-//             type="text"
-//             name="imageAlt"
-//             label="Image Alt"
-//             onChange={(e) =>
-//               setForm((prev: any) => ({
-//                 ...prev,
-//                 [page.locale!]: {
-//                   ...prev[page.locale!],
-//                   blocks: {
-//                     ...prev[page.locale!].blocks,
-//                     imageAlt: e.target.value,
-//                   },
-//                 },
-//               }))
-//             }
-//           />
-//           <Input
-//             type="text"
-//             name="imageTitle"
-//             label="Image Title"
-//             onChange={(e) =>
-//               setForm((prev: any) => ({
-//                 ...prev,
-//                 [page.locale!]: {
-//                   ...prev[page.locale!],
-//                   blocks: {
-//                     ...prev[page.locale!].blocks,
-//                     imageTitle: e.target.value,
-//                   },
-//                 },
-//               }))
-//             }
-//           />
-//         </>
-//       )}
-//     </div>
-//   );
-// }

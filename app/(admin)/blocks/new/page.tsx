@@ -13,6 +13,7 @@ import { getLocales } from "@/services/getLocales";
 import Gallery from "@/components/Gallery";
 import Image from "next/image";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import { useRouter } from "next/navigation";
 
 export default function AddBlockPage() {
   // const { slug: slugParam } = useParams();
@@ -25,11 +26,13 @@ export default function AddBlockPage() {
     id: string;
     path: string;
   } | null>(null);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(form);
     await mutateAsync({ data: form, image: selectedImage?.id });
+    router.push("/blocks");
   };
 
   const removeImage = () => {
@@ -49,12 +52,18 @@ export default function AddBlockPage() {
     queryFn: getLocales,
   });
 
+  const slugBuilder = (name: string) => {
+    const slug = name.toLowerCase().replace(/[^a-z0-9]/g, "-");
+    return slug;
+  };
+
   // const locales = page?.map((page) => page.locale);
 
   React.useEffect(() => {
     if (locales) {
       const globalPage = {
         name: "",
+        slug: "",
       };
       const localePage = locales.reverse().reduce(
         (acc, block) => ({
@@ -107,8 +116,17 @@ export default function AddBlockPage() {
             setForm((prev: any) => ({
               ...prev,
               name: e.target.value,
+              slug: slugBuilder(e.target.value),
             }));
           }}
+        />
+        <Input
+          type="text"
+          name="slug"
+          label="Slug"
+          readOnly
+          className="text-zinc-500"
+          value={form?.slug || ""}
         />
         <Tabs>
           {locales?.map((locale) => (

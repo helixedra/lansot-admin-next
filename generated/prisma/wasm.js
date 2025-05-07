@@ -258,6 +258,7 @@ exports.Prisma.BlockScalarFieldEnum = {
   locale: 'locale',
   title: 'title',
   content: 'content',
+  slug: 'slug',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   pageId: 'pageId',

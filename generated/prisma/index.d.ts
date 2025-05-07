@@ -16202,6 +16202,7 @@ export namespace Prisma {
     locale: string | null
     title: string | null
     content: string | null
+    slug: string | null
     createdAt: Date | null
     updatedAt: Date | null
     pageId: string | null
@@ -16214,6 +16215,7 @@ export namespace Prisma {
     locale: string | null
     title: string | null
     content: string | null
+    slug: string | null
     createdAt: Date | null
     updatedAt: Date | null
     pageId: string | null
@@ -16226,6 +16228,7 @@ export namespace Prisma {
     locale: number
     title: number
     content: number
+    slug: number
     createdAt: number
     updatedAt: number
     pageId: number
@@ -16240,6 +16243,7 @@ export namespace Prisma {
     locale?: true
     title?: true
     content?: true
+    slug?: true
     createdAt?: true
     updatedAt?: true
     pageId?: true
@@ -16252,6 +16256,7 @@ export namespace Prisma {
     locale?: true
     title?: true
     content?: true
+    slug?: true
     createdAt?: true
     updatedAt?: true
     pageId?: true
@@ -16264,6 +16269,7 @@ export namespace Prisma {
     locale?: true
     title?: true
     content?: true
+    slug?: true
     createdAt?: true
     updatedAt?: true
     pageId?: true
@@ -16349,6 +16355,7 @@ export namespace Prisma {
     locale: string | null
     title: string | null
     content: string | null
+    slug: string
     createdAt: Date
     updatedAt: Date
     pageId: string | null
@@ -16378,6 +16385,7 @@ export namespace Prisma {
     locale?: boolean
     title?: boolean
     content?: boolean
+    slug?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     pageId?: boolean
@@ -16392,6 +16400,7 @@ export namespace Prisma {
     locale?: boolean
     title?: boolean
     content?: boolean
+    slug?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     pageId?: boolean
@@ -16406,6 +16415,7 @@ export namespace Prisma {
     locale?: boolean
     title?: boolean
     content?: boolean
+    slug?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     pageId?: boolean
@@ -16420,13 +16430,14 @@ export namespace Prisma {
     locale?: boolean
     title?: boolean
     content?: boolean
+    slug?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     pageId?: boolean
     imageId?: boolean
   }
 
-  export type BlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "locale" | "title" | "content" | "createdAt" | "updatedAt" | "pageId" | "imageId", ExtArgs["result"]["block"]>
+  export type BlockOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "locale" | "title" | "content" | "slug" | "createdAt" | "updatedAt" | "pageId" | "imageId", ExtArgs["result"]["block"]>
   export type BlockInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     page?: boolean | Block$pageArgs<ExtArgs>
     image?: boolean | Block$imageArgs<ExtArgs>
@@ -16452,6 +16463,7 @@ export namespace Prisma {
       locale: string | null
       title: string | null
       content: string | null
+      slug: string
       createdAt: Date
       updatedAt: Date
       pageId: string | null
@@ -16886,6 +16898,7 @@ export namespace Prisma {
     readonly locale: FieldRef<"Block", 'String'>
     readonly title: FieldRef<"Block", 'String'>
     readonly content: FieldRef<"Block", 'String'>
+    readonly slug: FieldRef<"Block", 'String'>
     readonly createdAt: FieldRef<"Block", 'DateTime'>
     readonly updatedAt: FieldRef<"Block", 'DateTime'>
     readonly pageId: FieldRef<"Block", 'String'>
@@ -20741,6 +20754,7 @@ export namespace Prisma {
     locale: 'locale',
     title: 'title',
     content: 'content',
+    slug: 'slug',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     pageId: 'pageId',
@@ -21799,6 +21813,7 @@ export namespace Prisma {
     locale?: StringNullableFilter<"Block"> | string | null
     title?: StringNullableFilter<"Block"> | string | null
     content?: StringNullableFilter<"Block"> | string | null
+    slug?: StringFilter<"Block"> | string
     createdAt?: DateTimeFilter<"Block"> | Date | string
     updatedAt?: DateTimeFilter<"Block"> | Date | string
     pageId?: StringNullableFilter<"Block"> | string | null
@@ -21813,6 +21828,7 @@ export namespace Prisma {
     locale?: SortOrderInput | SortOrder
     title?: SortOrderInput | SortOrder
     content?: SortOrderInput | SortOrder
+    slug?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     pageId?: SortOrderInput | SortOrder
@@ -21830,6 +21846,7 @@ export namespace Prisma {
     locale?: StringNullableFilter<"Block"> | string | null
     title?: StringNullableFilter<"Block"> | string | null
     content?: StringNullableFilter<"Block"> | string | null
+    slug?: StringFilter<"Block"> | string
     createdAt?: DateTimeFilter<"Block"> | Date | string
     updatedAt?: DateTimeFilter<"Block"> | Date | string
     pageId?: StringNullableFilter<"Block"> | string | null
@@ -21844,6 +21861,7 @@ export namespace Prisma {
     locale?: SortOrderInput | SortOrder
     title?: SortOrderInput | SortOrder
     content?: SortOrderInput | SortOrder
+    slug?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     pageId?: SortOrderInput | SortOrder
@@ -21862,6 +21880,7 @@ export namespace Prisma {
     locale?: StringNullableWithAggregatesFilter<"Block"> | string | null
     title?: StringNullableWithAggregatesFilter<"Block"> | string | null
     content?: StringNullableWithAggregatesFilter<"Block"> | string | null
+    slug?: StringWithAggregatesFilter<"Block"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Block"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Block"> | Date | string
     pageId?: StringNullableWithAggregatesFilter<"Block"> | string | null
@@ -23055,6 +23074,7 @@ export namespace Prisma {
     locale?: string | null
     title?: string | null
     content?: string | null
+    slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
     page?: PageCreateNestedOneWithoutBlocksInput
@@ -23067,6 +23087,7 @@ export namespace Prisma {
     locale?: string | null
     title?: string | null
     content?: string | null
+    slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
     pageId?: string | null
@@ -23079,6 +23100,7 @@ export namespace Prisma {
     locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     page?: PageUpdateOneWithoutBlocksNestedInput
@@ -23091,6 +23113,7 @@ export namespace Prisma {
     locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -23103,6 +23126,7 @@ export namespace Prisma {
     locale?: string | null
     title?: string | null
     content?: string | null
+    slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
     pageId?: string | null
@@ -23115,6 +23139,7 @@ export namespace Prisma {
     locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23125,6 +23150,7 @@ export namespace Prisma {
     locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24061,6 +24087,7 @@ export namespace Prisma {
     locale?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    slug?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     pageId?: SortOrder
@@ -24073,6 +24100,7 @@ export namespace Prisma {
     locale?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    slug?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     pageId?: SortOrder
@@ -24085,6 +24113,7 @@ export namespace Prisma {
     locale?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    slug?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     pageId?: SortOrder
@@ -26973,6 +27002,7 @@ export namespace Prisma {
     locale?: string | null
     title?: string | null
     content?: string | null
+    slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
     image?: ImageCreateNestedOneWithoutBlocksInput
@@ -26984,6 +27014,7 @@ export namespace Prisma {
     locale?: string | null
     title?: string | null
     content?: string | null
+    slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
     imageId?: string | null
@@ -27085,6 +27116,7 @@ export namespace Prisma {
     locale?: StringNullableFilter<"Block"> | string | null
     title?: StringNullableFilter<"Block"> | string | null
     content?: StringNullableFilter<"Block"> | string | null
+    slug?: StringFilter<"Block"> | string
     createdAt?: DateTimeFilter<"Block"> | Date | string
     updatedAt?: DateTimeFilter<"Block"> | Date | string
     pageId?: StringNullableFilter<"Block"> | string | null
@@ -27456,6 +27488,7 @@ export namespace Prisma {
     locale?: string | null
     title?: string | null
     content?: string | null
+    slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
     page?: PageCreateNestedOneWithoutBlocksInput
@@ -27467,6 +27500,7 @@ export namespace Prisma {
     locale?: string | null
     title?: string | null
     content?: string | null
+    slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
     pageId?: string | null
@@ -28121,6 +28155,7 @@ export namespace Prisma {
     locale?: string | null
     title?: string | null
     content?: string | null
+    slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
     imageId?: string | null
@@ -28142,6 +28177,7 @@ export namespace Prisma {
     locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: ImageUpdateOneWithoutBlocksNestedInput
@@ -28153,6 +28189,7 @@ export namespace Prisma {
     locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28164,6 +28201,7 @@ export namespace Prisma {
     locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     imageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28381,6 +28419,7 @@ export namespace Prisma {
     locale?: string | null
     title?: string | null
     content?: string | null
+    slug: string
     createdAt?: Date | string
     updatedAt?: Date | string
     pageId?: string | null
@@ -28392,6 +28431,7 @@ export namespace Prisma {
     locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     page?: PageUpdateOneWithoutBlocksNestedInput
@@ -28403,6 +28443,7 @@ export namespace Prisma {
     locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pageId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28414,6 +28455,7 @@ export namespace Prisma {
     locale?: NullableStringFieldUpdateOperationsInput | string | null
     title?: NullableStringFieldUpdateOperationsInput | string | null
     content?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     pageId?: NullableStringFieldUpdateOperationsInput | string | null

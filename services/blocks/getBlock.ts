@@ -1,10 +1,13 @@
 "use server";
 import prisma from "@/lib/prisma";
 
-export async function getBlock(id: string) {
+export async function getBlock(slug: string) {
   const res = await prisma.block.findMany({
     where: {
-      id: id,
+      slug: slug,
+    },
+    include: {
+      image: true,
     },
   });
   return res;
