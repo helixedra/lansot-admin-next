@@ -6,6 +6,7 @@ import {
   RiImageFill,
   RiFileListFill,
   RiTextBlock,
+  RiShoppingCartFill,
 } from "react-icons/ri";
 
 export default function Sidebar() {
@@ -27,6 +28,11 @@ export default function Sidebar() {
       href: "/blocks",
     },
     {
+      label: "Products",
+      icon: <RiShoppingCartFill />,
+      href: "/products",
+    },
+    {
       label: "Images",
       icon: <RiImageFill />,
       href: "/images",
@@ -34,7 +40,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="h-full bg-zinc-400/20">
+    <div className="h-full bg-zinc-400/20 fixed">
       <ul className="flex flex-col gap-4 py-4 px-2 h-full min-h-screen">
         {items.map((item) => (
           <li key={item.label}>

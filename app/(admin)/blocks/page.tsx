@@ -13,7 +13,7 @@ export default function BlocksPage() {
 
   const { data, isLoading } = useQuery({
     queryKey: ["blocks"],
-    queryFn: getBlocks,
+    queryFn: () => getBlocks(),
   });
 
   let blocks: Block[] = [];

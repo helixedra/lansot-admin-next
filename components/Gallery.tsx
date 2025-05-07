@@ -6,53 +6,66 @@ import { getImages } from "@/services/images/getImages";
 import { ImageItem } from "./shared/ImageItem";
 import { Checkbox } from "./jump-ui/components/Checkbox";
 
-export default function Gallery({
-  selectedImage,
-  setSelectedImage,
-}: {
-  selectedImage: { id: string; path: string } | null;
-  setSelectedImage: (image: { id: string; path: string } | null) => void;
-}) {
-  const [open, setOpen] = React.useState(false);
+type InputChange = React.ChangeEvent<HTMLInputElement>;
 
-  const { data: images } = useQuery({
+type ImageType = {
+  id: string;
+  image: string;
+};
+
+export default function Gallery({
+  selectedImages,
+  setSelectedImages,
+  open,
+  setOpen,
+  multiselect = false,
+}: {
+  selectedImages: { id: string; path: string }[];
+  setSelectedImages: (images: { id: string; path: string }[]) => void;
+  open: boolean;
+  setOpen: (open: boolean) => void;
+  multiselect?: boolean;
+}) {
+  const { data: images } = useQuery<ImageType[]>({
     queryKey: ["images"],
     queryFn: getImages,
   });
 
+  const handleSelect = (checked: boolean, image: ImageType) => {
+    if (multiselect) {
+      const updated = checked
+        ? [...selectedImages, { id: image.id, path: image.image }]
+        : selectedImages.filter((img) => img.id !== image.id);
+      setSelectedImages(updated);
+    } else {
+      setSelectedImages(checked ? [{ id: image.id, path: image.image }] : []);
+      setOpen(false); // тільки в одиночному виборі закриваємо
+    }
+  };
+
   return (
-    <>
-      <Dialog isOpen={open} onClose={() => setOpen(false)}>
-        <Dialog.Content>
-          <Dialog.Header>Gallery</Dialog.Header>
-          <ul className="flex flex-wrap gap-4">
-            {images?.map((image: any) => (
-              <div
-                key={image.id}
-                className="flex items-center gap-2 relative w-fit"
-              >
-                <Checkbox
-                  checked={selectedImage?.id === image.id}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    e.stopPropagation();
-                    setSelectedImage(
-                      e.target.checked
-                        ? { id: image.id, path: image.image }
-                        : null
-                    );
-                  }}
-                  className="absolute top-2 right-2 z-10 bg-zinc-200/20"
-                />
-                <ImageItem image={image} />
-              </div>
-            ))}
-          </ul>
-          <Button onClick={() => setOpen(false)}>Select</Button>
-        </Dialog.Content>
-      </Dialog>
-      <Button outline onClick={() => setOpen(true)}>
-        Open Gallery
-      </Button>
-    </>
+    <Dialog isOpen={open} onClose={() => setOpen(false)}>
+      <Dialog.Content>
+        <Dialog.Header>Gallery</Dialog.Header>
+        <div className="flex flex-wrap gap-4">
+          {images?.map((image) => (
+            <div
+              key={image.id}
+              className="flex items-center gap-2 relative w-fit list-none"
+            >
+              <Checkbox
+                checked={selectedImages.some((img) => img.id === image.id)}
+                onChange={(e: InputChange) => {
+                  e.stopPropagation();
+                  handleSelect(e.target.checked, image);
+                }}
+                className="absolute top-2 right-2 z-10 bg-zinc-200/20"
+              />
+              <ImageItem image={image} />
+            </div>
+          ))}
+        </div>
+      </Dialog.Content>
+    </Dialog>
   );
 }
